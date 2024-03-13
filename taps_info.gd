@@ -1,5 +1,6 @@
 extends HBoxContainer
 
+
 func _ready():
 	if OS.get_name() != "OSX":
 		var safe_area = OS.get_window_safe_area()
