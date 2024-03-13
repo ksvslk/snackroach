@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/roof.gd" type="Script" id=1]
+[ext_resource path="res://scripts/adjusting_tilemap.gd" type="Script" id=2]
+[ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=3]
+
+[sub_resource type="RectangleShape2D" id=14]
+resource_local_to_scene = true
+extents = Vector2( 619.054, 246.154 )
+
+[node name="Shelter" type="Area2D" groups=["roofs_group"]]
+position = Vector2( 1823.53, 3675.42 )
+collision_layer = 64
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Shelter" type="TileMap" parent="." groups=["tappable"]]
+tile_set = ExtResource( 3 )
+collision_layer = 64
+collision_mask = 2
+format = 1
+tile_data = PoolIntArray( 65533, 233, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 213, 0, 3, 213, 0, 4, 213, 0, 5, 213, 0, 6, 233, 0, 131069, 205, 0, 131070, 233, 0, 131071, 233, 0, 65536, 233, 0, 65537, 233, 0, 65538, 233, 0, 65539, 233, 0, 65540, 233, 0, 65541, 233, 0, 65542, 205, 0, 196605, 205, 0, 196606, 233, 0, 131073, 233, 0, 131074, 233, 0, 131077, 233, 0, 131078, 205, 0, 262141, 205, 0, 262142, 233, 0, 262143, 233, 0, 196608, 233, 0, 196609, 233, 0, 196610, 233, 0, 196611, 233, 0, 196612, 233, 0, 196613, 233, 0, 196614, 205, 0, 327677, 205, 0, 327678, 233, 0, 327679, 233, 0, 262144, 233, 0, 262147, 233, 0, 262148, 233, 0, 262149, 233, 0, 262150, 205, 0, 393213, 205, 0, 393214, 233, 0, 393215, 233, 0, 327680, 233, 0, 327683, 233, 0, 327684, 233, 0, 327685, 233, 0, 327686, 205, 0, 458749, 205, 0, 458750, 233, 0, 458751, 233, 0, 393216, 233, 0, 393217, 233, 0, 393218, 233, 0, 393219, 233, 0, 393220, 233, 0, 393221, 233, 0, 393222, 205, 0, 524285, 205, 0, 524286, 233, 0, 458752, 233, 0, 458753, 233, 0, 458754, 233, 0, 458755, 233, 0, 458757, 233, 0, 458758, 205, 0, 589821, 205, 0, 589822, 233, 0, 589823, 233, 0, 524292, 233, 0, 524293, 233, 0, 524294, 205, 0, 655357, 233, 0, 655358, 213, 0, 655359, 213, 0, 589824, 213, 0, 589825, 213, 0, 589826, 213, 0, 589827, 213, 0, 589828, 213, 0, 589829, 213, 0, 589830, 233, 0 )
+script = ExtResource( 2 )
+pit_edge_margin = 1.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 128, 320 )
+shape = SubResource( 14 )

@@ -1,0 +1,29 @@
+extends Node2D
+
+onready var roach = $KinematicCockroach
+onready var final_point = $FinalPoint
+onready var success_point = $SuccessPoint
+var game_completed = false
+
+
+func _ready():
+	var hat = roach.get_node("CockWrapper/Cockroach/Hat")
+	hat.get_node("Crown").visible = true
+	hat.texture = null
+	GPack.unlock_achievement(C.achievement_crown)
+	roach.state_machine.transition_to(
+		C.success_State,
+		{
+			"points":[
+				success_point.global_position,
+				final_point.global_position]
+		}
+	)
+	
+
+func _process(delta):
+	if not game_completed and roach.global_position.distance_to(final_point.global_position) <= 50:
+		if roach.rotation_degrees < 90:
+			roach.rotation += 1 * delta * 5
+		else:
+			game_completed = true

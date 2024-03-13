@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/play_button.svg" type="Texture" id=1]
+[ext_resource path="res://scripts/add_taps_rewared_button.gd" type="Script" id=2]
+[ext_resource path="res://fonts/LongerTextButton.tres" type="DynamicFont" id=3]
+[ext_resource path="res://styles/MoreTapsStyle.tres" type="StyleBox" id=4]
+
+[node name="AddTapsForRewarded" type="Button"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 296.0
+margin_right = 1042.0
+margin_bottom = 392.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "ADD TAPS"
+icon = ExtResource( 1 )
+flat = true
+icon_align = 2
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = -200.0
+margin_top = -60.0
+margin_right = -50.0
+margin_bottom = 146.0
+mouse_filter = 2
+color = Color( 1, 0.866667, 0, 1 )

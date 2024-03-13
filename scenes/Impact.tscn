@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/impact.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.957, 1 )
+colors = PoolColorArray( 1, 0.96, 0.72, 1, 0.94, 0.84, 0.63, 0, 0.93, 0.83, 0.62, 0 )
+
+[node name="BrickImpact" type="CPUParticles2D"]
+amount = 10
+lifetime = 2.0
+preprocess = 0.5
+explosiveness = 0.5
+emission_shape = 1
+emission_sphere_radius = 100.0
+direction = Vector2( 0, 1 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 95.0
+orbit_velocity = 0.01
+radial_accel = 15.0
+scale_amount = 30.0
+scale_amount_random = 0.8
+color = Color( 0.980392, 0.968627, 0.960784, 0.960784 )
+color_ramp = SubResource( 2 )
+script = ExtResource( 1 )

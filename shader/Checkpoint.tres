@@ -1,0 +1,49 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float r_color : hint_range(0.0, 15.0, 0.1) = 1.0;
+uniform float g_color : hint_range(0.0, 15.0, 0.1) = 1.0;
+uniform float b_color : hint_range(0.0, 15.0, 0.1) = 1.0;
+uniform float r_step : hint_range(0.0, 15.0, 0.1) = 1.0;
+uniform float g_step : hint_range(0.0, 15.0, 0.1) = 1.0;
+uniform float b_step : hint_range(0.0, 15.0, 0.1) = 1.0;
+
+uniform float inner_circle_start : hint_range(0.0, 1.0, 0.01) = 0.4;
+uniform float inner_circle_end : hint_range(0.0, 1.0, 0.01) = 0.5;
+uniform float outer_circle_start : hint_range(0.0, 0.5, 0.01) = 0.5;
+uniform float outer_circle_end : hint_range(0.0, 0.5, 0.01) = 0.48;
+
+uniform float some_stuff : hint_range(0.0, 5.0, 0.01) = 1.0;
+uniform float some_tere : hint_range(0.0, 5.0, 0.01) = 1.0;
+
+void fragment()
+{
+	vec2 coord = UV - 0.5;
+	vec3 col = vec3(0.0);
+	
+	//col.r += abs(0.1 + length(coord) - 0.6 * abs(sin(TIME * 0.9 / 12.0)));
+	//col.g += abs(0.1 + length(coord) - 0.6 * abs(sin(TIME * 0.6 / 4.0)));
+	//col.b += abs(0.1 + length(coord) - 0.6 * abs(sin(TIME * 0.3 / 9.0)));
+	
+	col = abs(some_tere + length(coord) - some_stuff * abs(sin(TIME * vec3(r_step/r_color, g_step/g_color, b_step/b_color))));
+	float a = smoothstep(inner_circle_start, inner_circle_end, length(coord));
+	a *= smoothstep(outer_circle_start, outer_circle_end, length(coord));
+	COLOR = vec4(0.5/col, a);
+}"
+
+[resource]
+shader = SubResource( 7 )
+shader_param/r_color = 0.0
+shader_param/g_color = 2.0
+shader_param/b_color = 0.0
+shader_param/r_step = 1.0
+shader_param/g_step = 1.0
+shader_param/b_step = 1.0
+shader_param/inner_circle_start = 0.01
+shader_param/inner_circle_end = 0.0
+shader_param/outer_circle_start = 0.25
+shader_param/outer_circle_end = 0.5
+shader_param/some_stuff = 0.4
+shader_param/some_tere = 0.4

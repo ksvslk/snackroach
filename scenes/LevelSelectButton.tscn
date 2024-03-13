@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/LongerTextButton.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/LevelSelectButton.gd" type="Script" id=2]
+[ext_resource path="res://graphics/GUI 1.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 770, 11, 121, 126 )
+
+[node name="Control" type="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -3.0
+margin_right = -3.0
+margin_bottom = -3.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+icon = SubResource( 3 )
+flat = true
+icon_align = 1
+script = ExtResource( 2 )

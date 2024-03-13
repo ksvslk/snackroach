@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/tv_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/result.gd" type="Script" id=2]
+
+[node name="Result" type="Label"]
+modulate = Color( 1, 1, 1, 0.870588 )
+margin_right = 317.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "PAR!"
+valign = 1
+script = ExtResource( 2 )

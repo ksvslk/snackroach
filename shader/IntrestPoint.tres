@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform float thickness : hint_range(0.0, 1.0, 0.01) = 0.09;
+uniform float radius : hint_range(0.0, 1.0, 0.01) = 0.35;
+uniform float radius_amplitude : hint_range(0.0, 1.0, 0.01) = 0.04;
+uniform float thickness_amplitude : hint_range(0.0, 1.0, 0.01) = 0.05;
+
+
+void fragment()
+{
+    float time = TIME * 3.0;
+    float calculated_radius = radius + radius_amplitude * sin(time);
+    float calculated_thickness = thickness + thickness_amplitude * cos(time);
+    vec2 center = vec2(0.5, 0.5);
+    float dist = distance(UV, center);
+	COLOR = vec4(smoothstep(calculated_thickness/2.0, 0.01, abs(dist - calculated_radius)));
+}
+"
+
+[resource]
+shader = SubResource( 9 )
+shader_param/thickness = 0.09
+shader_param/radius = 0.35
+shader_param/radius_amplitude = 0.04
+shader_param/thickness_amplitude = 0.05

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Rock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/rock_thrower.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Spawner2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Impact.tscn" type="PackedScene" id=4]
+
+[node name="RockThrower" type="Timer"]
+script = ExtResource( 2 )
+
+[node name="Spawner2D" parent="." instance=ExtResource( 3 )]
+z_index = 4
+__meta__ = {
+"_edit_lock_": true
+}
+_rock = ExtResource( 1 )
+_impact = ExtResource( 4 )
+
+[node name="LaunchPositionRight" type="Position2D" parent="."]
+position = Vector2( 1200, 1200 )
+
+[node name="LaunchPositionLeft" type="Position2D" parent="."]
+position = Vector2( -120, 1200 )
+
+[node name="ThrowingTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="PauseTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="." to="." method="_on_RockThrower_timeout"]
+[connection signal="timeout" from="ThrowingTime" to="." method="_on_ThrowingTime_timeout"]
+[connection signal="timeout" from="PauseTime" to="." method="_on_PauseTime_timeout"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/ring.png" type="Texture" id=1]
+[ext_resource path="res://sounds/pop.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/lost_food.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.236127, 0.726917 ), 0.0, 0.0, 0, 0, Vector2( 0.451004, 0.546736 ), 0.0, 0.0, 0, 0, Vector2( 0.716647, 0.578268 ), 1.90766, 1.90766, 0, 0, Vector2( 1, 0.842342 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.22191, 0.417135, 0.698034, 1 )
+colors = PoolColorArray( 1, 0, 0.423529, 1, 1, 0.992157, 0, 1, 0.329412, 0.54902, 0.309804, 1, 0, 0.12549, 1, 1, 0, 0, 0, 0 )
+
+[node name="LostFood" type="CPUParticles2D"]
+z_index = 4
+emitting = false
+amount = 50
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+randomness = 0.73
+lifetime_randomness = 0.5
+local_coords = false
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 150.0
+direction = Vector2( 0, 1 )
+gravity = Vector2( 0, 750 )
+orbit_velocity = 0.01
+linear_accel = 63.37
+linear_accel_random = 0.47
+damping = 44.8
+damping_random = 0.43
+scale_amount = 0.5
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 4 )
+color = Color( 0.980392, 0.972549, 0.956863, 0.588235 )
+color_ramp = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+bus = "SFX"

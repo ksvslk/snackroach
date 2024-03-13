@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/tv_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/score.gd" type="Script" id=2]
+
+[node name="Score" type="Label"]
+margin_right = 566.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Score: 0"
+valign = 1
+autowrap = true
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+target_score = 100
+
+[node name="ParticlesTarget" type="Position2D" parent="."]

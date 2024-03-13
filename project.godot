@@ -1,0 +1,352 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AdMob",
+"language": "GDScript",
+"path": "res://admob-lib/admob.gd"
+}, {
+"base": "TileMap",
+"class": "AdjustableTileMap",
+"language": "GDScript",
+"path": "res://scripts/adjusting_tilemap.gd"
+}, {
+"base": "TileMap",
+"class": "Alcohol",
+"language": "GDScript",
+"path": "res://scripts/alcohol.gd"
+}, {
+"base": "Node2D",
+"class": "Barrier",
+"language": "GDScript",
+"path": "res://scripts/deck.gd"
+}, {
+"base": "Node2D",
+"class": "Beam",
+"language": "GDScript",
+"path": "res://scripts/beam.gd"
+}, {
+"base": "StaticBody2D",
+"class": "BeamButton",
+"language": "GDScript",
+"path": "res://scripts/beam_button.gd"
+}, {
+"base": "Area2D",
+"class": "BlackHole",
+"language": "GDScript",
+"path": "res://scripts/black_hole.gd"
+}, {
+"base": "Area2D",
+"class": "Checkpoint",
+"language": "GDScript",
+"path": "res://scripts/checkpoint.gd"
+}, {
+"base": "Area2D",
+"class": "Conveyer",
+"language": "GDScript",
+"path": "res://scripts/conveyer.gd"
+}, {
+"base": "State",
+"class": "EnemyState",
+"language": "GDScript",
+"path": "res://scripts/enemy_state.gd"
+}, {
+"base": "Node2D",
+"class": "Gate",
+"language": "GDScript",
+"path": "res://scripts/gate.gd"
+}, {
+"base": "StaticBody2D",
+"class": "GateButton",
+"language": "GDScript",
+"path": "res://scripts/gate_button.gd"
+}, {
+"base": "TileMap",
+"class": "Honey",
+"language": "GDScript",
+"path": "res://scripts/honey.gd"
+}, {
+"base": "CPUParticles2D",
+"class": "Impact",
+"language": "GDScript",
+"path": "res://scripts/impact.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "KinematicCockroach",
+"language": "GDScript",
+"path": "res://scripts/kinematic_cockroach.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scripts/level_scene.gd"
+}, {
+"base": "ColorRect",
+"class": "LevelSwitcher",
+"language": "GDScript",
+"path": "res://scripts/scene_switcher.gd"
+}, {
+"base": "Node",
+"class": "Master",
+"language": "GDScript",
+"path": "res://scripts/master.gd"
+}, {
+"base": "Node2D",
+"class": "Obstacle",
+"language": "GDScript",
+"path": "res://scripts/obstacle.gd"
+}, {
+"base": "Area2D",
+"class": "Pit",
+"language": "GDScript",
+"path": "res://scripts/pit.gd"
+}, {
+"base": "State",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://scripts/player_state.gd"
+}, {
+"base": "TileMap",
+"class": "RestorableTileMap",
+"language": "GDScript",
+"path": "res://scripts/restorable_tilemap.gd"
+}, {
+"base": "Timer",
+"class": "RockThrower",
+"language": "GDScript",
+"path": "res://scripts/rock_thrower.gd"
+}, {
+"base": "Area2D",
+"class": "Roof",
+"language": "GDScript",
+"path": "res://scripts/roof.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ScoreLine",
+"language": "GDScript",
+"path": "res://scripts/score_line.gd"
+}, {
+"base": "TileMap",
+"class": "Snacks",
+"language": "GDScript",
+"path": "res://scripts/snacks.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Spider",
+"language": "GDScript",
+"path": "res://scripts/spider.gd"
+}, {
+"base": "StaticBody2D",
+"class": "SpikesSquare",
+"language": "GDScript",
+"path": "res://scripts/spikes_square.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://scripts/base_state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://scripts/state_machine.gd"
+}, {
+"base": "Area2D",
+"class": "ThrowableNode",
+"language": "GDScript",
+"path": "res://scripts/throwable_node.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TitanBeetle",
+"language": "GDScript",
+"path": "res://scripts/titan_beetle.gd"
+}, {
+"base": "State",
+"class": "TitanState",
+"language": "GDScript",
+"path": "res://scripts/titan_state.gd"
+}, {
+"base": "Node2D",
+"class": "TrafficLight",
+"language": "GDScript",
+"path": "res://scripts/traffic_light.gd"
+} ]
+_global_script_class_icons={
+"AdMob": "res://admob-lib/icon.png",
+"AdjustableTileMap": "",
+"Alcohol": "res://graphics/icons/alcohol_node.svg",
+"Barrier": "res://graphics/icons/barrier_node.svg",
+"Beam": "res://graphics/icons/beam_node.svg",
+"BeamButton": "",
+"BlackHole": "",
+"Checkpoint": "",
+"Conveyer": "res://graphics/icons/belt_node.svg",
+"EnemyState": "",
+"Gate": "res://graphics/icons/gate_node.svg",
+"GateButton": "",
+"Honey": "res://graphics/icons/honey_node.svg",
+"Impact": "",
+"KinematicCockroach": "res://graphics/icons/hero_node.svg",
+"Level": "",
+"LevelSwitcher": "",
+"Master": "",
+"Obstacle": "res://graphics/icons/obstacle_node.svg",
+"Pit": "res://graphics/icons/pit_node.svg",
+"PlayerState": "",
+"RestorableTileMap": "",
+"RockThrower": "",
+"Roof": "res://graphics/icons/roof_node.svg",
+"ScoreLine": "",
+"Snacks": "",
+"Spider": "res://graphics/icons/spider_node.svg",
+"SpikesSquare": "",
+"State": "",
+"StateMachine": "",
+"ThrowableNode": "",
+"TitanBeetle": "res://graphics/icons/beetle_node.svg",
+"TitanState": "",
+"TrafficLight": ""
+}
+
+[application]
+
+config/name="Snackroach"
+run/main_scene="res://Master.tscn"
+boot_splash/show_image=false
+boot_splash/image="res://icon/angry_smiley.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon/icon_main.png"
+
+[autoload]
+
+GPack="*res://scripts/gpack.gd"
+C="*res://scripts/c.gd"
+Data="*res://scripts/data.gd"
+
+[debug]
+
+gdscript/warnings/narrowing_conversion=false
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
+gdscript/warnings/unsafe_call_argument=true
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1920
+window/size/test_height=1080
+window/vsync/use_vsync=false
+window/handheld/orientation="portrait"
+mouse_cursor/custom_image="res://graphics/cursor2.png"
+mouse_cursor/custom_image_hotspot=Vector2( 25, 25 )
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[global]
+
+joystick=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+l={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+r={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+u={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+d={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="roach"
+2d_physics/layer_2="throwable"
+2d_physics/layer_3="floor"
+2d_physics/layer_4="wall"
+2d_physics/layer_5="food"
+2d_physics/layer_6="pit"
+2d_physics/layer_7="roof"
+2d_physics/layer_8="second_floor"
+2d_physics/layer_9="honey"
+2d_physics/layer_10="leg"
+2d_physics/layer_11="onoff"
+2d_physics/layer_12="laser"
+2d_physics/layer_13="roach_big"
+2d_physics/layer_14="enemy"
+2d_physics/layer_15="enemy_big"
+2d_physics/layer_16="enemy_leg"
+2d_physics/layer_17="obstacle"
+2d_physics/layer_18="checkpoint"
+2d_physics/layer_19="moving_floor"
+2d_physics/layer_20="alcohol"
+2d_physics/layer_21="black_hole"
+2d_physics/layer_22="light_switch"
+
+[locale]
+
+translations=PoolStringArray( "res://translations/translations.de.translation", "res://translations/translations.en.translation", "res://translations/translations.es.translation", "res://translations/translations.et.translation", "res://translations/translations.fi.translation", "res://translations/translations.fr.translation", "res://translations/translations.hi.translation", "res://translations/translations.id.translation", "res://translations/translations.it.translation", "res://translations/translations.ja.translation", "res://translations/translations.ko.translation", "res://translations/translations.pt.translation", "res://translations/translations.th.translation", "res://translations/translations.vi.translation", "res://translations/translations.ar.translation", "res://translations/translations.ms.translation", "res://translations/translations.nb.translation", "res://translations/translations.ru.translation", "res://translations/translations.sv.translation", "res://translations/translations.tr.translation", "res://translations/translations.zh_Hans_CN.translation" )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
+threads/thread_model=2
+vram_compression/import_etc=true
+vram_compression/import_pvrtc=true
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/shading/force_blinn_over_ggx=true
+quality/filters/anisotropic_filter_level=2
+quality/filters/use_nearest_mipmap_filter=true
+quality/skinning/software_skinning_fallback=false
+quality/spatial_partitioning/render_tree_balance=1.0
+gles2/compatibility/disable_half_float=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+quality/filters/use_fxaa=true
+quality/depth/hdr=false
+environment/default_environment="res://default_env.tres"

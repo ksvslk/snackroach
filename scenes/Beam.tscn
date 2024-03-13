@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://shader/Beam.tres" type="Material" id=1]
+[ext_resource path="res://graphics/spotlight_1.png" type="Texture" id=2]
+[ext_resource path="res://scripts/beam.gd" type="Script" id=3]
+[ext_resource path="res://graphics/image404.png" type="Texture" id=4]
+[ext_resource path="res://sounds/electricity.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/switch.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/beam_button.gd" type="Script" id=7]
+[ext_resource path="res://scripts/line_laser.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Switch.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=24]
+resource_local_to_scene = true
+extents = Vector2( 224.5, 28 )
+
+[sub_resource type="CanvasItemMaterial" id=37]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id=36]
+radius = 89.0014
+
+[node name="Beam" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 16, 136 )
+points = PoolVector2Array( 139, 421.979, 137, 0 )
+width = 15.0
+default_color = Color( 0.541176, 0.431373, 0.243137, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 2
+
+[node name="LaserArea" type="Area2D" parent="."]
+position = Vector2( 250, 94 )
+collision_layer = 2048
+collision_mask = 20480
+input_pickable = false
+
+[node name="Tween" type="Tween" parent="LaserArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea"]
+position = Vector2( 224.5, 0 )
+shape = SubResource( 24 )
+
+[node name="Laser" type="Line2D" parent="LaserArea"]
+self_modulate = Color( 1, 1, 1, 0.627451 )
+material = ExtResource( 1 )
+position = Vector2( 450, 1 )
+points = PoolVector2Array( -449, 0, 0, 0 )
+width = 50.0
+default_color = Color( 0.4, 0.501961, 1, 0 )
+texture_mode = 2
+script = ExtResource( 8 )
+
+[node name="StartPortal" type="Sprite" parent="LaserArea/Laser"]
+modulate = Color( 0, 0.964706, 1, 1 )
+position = Vector2( -449, 0 )
+rotation = 1.5708
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 4 )
+region_rect = Rect2( -4, -12, 54, 36 )
+
+[node name="Glow" type="Sprite" parent="LaserArea/Laser/StartPortal"]
+show_behind_parent = true
+material = SubResource( 37 )
+position = Vector2( -0.922073, -29.4656 )
+scale = Vector2( 0.642348, 0.93621 )
+texture = ExtResource( 2 )
+
+[node name="EndPortal" type="Sprite" parent="LaserArea/Laser"]
+modulate = Color( 0, 0.964706, 1, 1 )
+rotation = -1.5708
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 278, 203, 10, 53 )
+
+[node name="Glow" type="Sprite" parent="LaserArea/Laser/EndPortal"]
+show_behind_parent = true
+material = SubResource( 37 )
+position = Vector2( 0.923721, -28.4486 )
+rotation = -3.14158
+scale = Vector2( 0.642348, 0.93621 )
+texture = ExtResource( 2 )
+
+[node name="ButtonArea" type="Area2D" parent="."]
+position = Vector2( 155, 656 )
+collision_layer = 1024
+collision_mask = 4098
+input_pickable = false
+
+[node name="SwitchGlow" parent="ButtonArea" instance=ExtResource( 9 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonArea"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 36 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BeamButton" type="StaticBody2D" parent="ButtonArea"]
+position = Vector2( -155, -656 )
+collision_layer = 1024
+collision_mask = 2
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ButtonArea/BeamButton"]
+position = Vector2( 155, 656.5 )
+shape = SubResource( 36 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Switch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="Electrocuted" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[connection signal="area_shape_entered" from="LaserArea" to="." method="_on_LaserArea_area_shape_entered"]
+[connection signal="area_shape_entered" from="ButtonArea" to="." method="_on_ButtonArea_area_shape_entered"]

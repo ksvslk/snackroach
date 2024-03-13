@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sounds/next_level.wav" type="AudioStream" id=1]
+[ext_resource path="res://shader/GlitchShaderMaterial.tres" type="Material" id=2]
+[ext_resource path="res://scripts/scene_switcher.gd" type="Script" id=3]
+
+[node name="LevelSwitcher" type="ColorRect"]
+modulate = Color( 0, 0, 0, 1 )
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="TweenStart" type="Tween" parent="."]
+
+[node name="TweenEnd" type="Tween" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+bus = "SFX"

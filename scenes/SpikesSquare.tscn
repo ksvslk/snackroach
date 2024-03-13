@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://graphics/spot.png" type="Texture" id=1]
+[ext_resource path="res://graphics/pixel.png" type="Texture" id=2]
+[ext_resource path="res://graphics/spikes.png" type="Texture" id=3]
+[ext_resource path="res://scripts/spikes_square.gd" type="Script" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 2
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 192.846, 192.846 )
+
+[node name="SpikesSquare" type="StaticBody2D"]
+position = Vector2( 1134.39, 2328.33 )
+collision_layer = 65536
+collision_mask = 4096
+script = ExtResource( 4 )
+
+[node name="Highlight" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.478431 )
+material = SubResource( 3 )
+position = Vector2( -5.39001, 192.67 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 1, 204, 132 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.858824, 0.733333, 0.611765, 1 )
+position = Vector2( 119.975, 67.6032 )
+rotation = -1.57079
+scale = Vector2( 248.509, 248.776 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 1, 204, 132 )
+
+[node name="Mat" type="Sprite" parent="."]
+modulate = Color( 0.729412, 0.945098, 0.74902, 0.298039 )
+material = SubResource( 3 )
+position = Vector2( -4.38538, 193.108 )
+rotation = -1.57079
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 1, 204, 132 )
+
+[node name="One" type="Sprite" parent="."]
+position = Vector2( 164.486, 22.6877 )
+rotation = 0.785397
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 59, 139 )
+
+[node name="One2" type="Sprite" parent="."]
+position = Vector2( 164.486, 360.168 )
+rotation = 2.35619
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 59, 139 )
+
+[node name="One3" type="Sprite" parent="."]
+position = Vector2( -172.994, 360.168 )
+rotation = -2.3562
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 59, 139 )
+
+[node name="One4" type="Sprite" parent="."]
+position = Vector2( -172.994, 22.688 )
+rotation = -0.785396
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 59, 139 )
+
+[node name="SpikesTop" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 249, 143 )
+
+[node name="SpikesRight" type="Sprite" parent="."]
+position = Vector2( 187.174, 195.682 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 249, 143 )
+
+[node name="SpikesBottom" type="Sprite" parent="."]
+position = Vector2( -8.50781, 382.855 )
+rotation = 3.14159
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 249, 143 )
+
+[node name="SpikesLeft" type="Sprite" parent="."]
+position = Vector2( -195.682, 187.174 )
+rotation = -1.5708
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 249, 143 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -5.67188, 192.846 )
+shape = SubResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -124.783, 70.8992, 116.275, 70.8992, 116.275, 311.957, -124.783, 311.957, -124.783, 70.8992 )
+default_color = Color( 0.458824, 0.298039, 0.156863, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
