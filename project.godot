@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "AdMob",
-"language": "GDScript",
-"path": "res://admob-lib/admob.gd"
-}, {
 "base": "TileMap",
 "class": "AdjustableTileMap",
 "language": "GDScript",
@@ -180,7 +175,6 @@ _global_script_classes=[ {
 "path": "res://scripts/traffic_light.gd"
 } ]
 _global_script_class_icons={
-"AdMob": "res://admob-lib/icon.png",
 "AdjustableTileMap": "",
 "Alcohol": "res://graphics/icons/alcohol_node.svg",
 "Barrier": "res://graphics/icons/barrier_node.svg",
