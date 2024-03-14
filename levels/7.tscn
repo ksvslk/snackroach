@@ -19,6 +19,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 2, 1, 5, 6 ), PoolIntA
 outlines = [ PoolVector2Array( 453.755, 476.443, 2654.47, 476.443, 2651.63, 2728.2, 2316.99, 2725.37, 2325.5, 2606.26, 2178.03, 2461.62, 1976.67, 2458.79, 1851.89, 2597.75, 1860.4, 2796.27, 1953.98, 2915.38, 2257.43, 2909.71, 2316.99, 2725.37, 2651.63, 2728.2, 2657.3, 3499.59, 459.427, 3485.41, 453.755, 2007.87, 879.151, 2005.03, 1018.11, 2158.17, 1250.66, 2161.01, 1375.45, 2044.73, 1375.45, 1803.68, 1273.35, 1707.25, 1001.1, 1707.25, 879.151, 1829.2, 879.151, 2005.03, 453.755, 2007.87 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2162.3, -12 )
+rotation = 1.57028
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -32,7 +34,8 @@ rewarded_taps_amount = 2
 layer = -2
 
 [node name="Floor" type="TileMap" parent="FloorCanvasLayer" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( 4.00001, 372.152 )
+position = Vector2( 1790, -7.99997 )
+rotation = 1.57028
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true
@@ -53,17 +56,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, 1055.41 )
@@ -90,9 +87,6 @@ inital_tempo = 11
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Roof" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, 1055.2 )

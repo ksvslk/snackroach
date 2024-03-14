@@ -36,6 +36,8 @@ resource_local_to_scene = true
 extents = Vector2( 106.25, 80 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1958, -15 )
+rotation = 1.57078
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -74,9 +76,6 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5070.56, -357.278 )
@@ -161,6 +160,9 @@ shape = SubResource( 5 )
 [node name="Shelter4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 408.38, 4801.3 )
 rotation = 4.71239
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter4" index="0"]
 tile_data = PoolIntArray( 65532, 233, 0, 65533, 213, 0, 65534, 213, 0, 65535, 213, 0, 0, 233, 0, 131068, 205, 0, 131069, 1073742057, 0, 65536, 205, 0, 196604, 205, 0, 196605, 1073742057, 0, 196606, 233, 0, 131072, 205, 0, 262140, 233, 0, 262141, 213, 0, 262142, 213, 0, 262143, 213, 0, 196608, 233, 0 )

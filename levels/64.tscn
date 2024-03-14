@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/snacks.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Roach.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/RockThrower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/SpikesSquare.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/BlackHole.tscn" type="PackedScene" id=10]
@@ -24,9 +25,23 @@ height = 181.612
 resource_local_to_scene = true
 extents = Vector2( 258.774, 28 )
 
+[sub_resource type="ShaderMaterial" id=59]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [sub_resource type="RectangleShape2D" id=49]
 resource_local_to_scene = true
 extents = Vector2( 258.774, 28 )
+
+[sub_resource type="ShaderMaterial" id=60]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=51]
 vertices = PoolVector2Array( 1125.88, 4185.89, 1483.21, 4188.73, 1488.88, 4787.12, 1125.88, 4784.28 )
@@ -62,12 +77,21 @@ height = 235.559
 resource_local_to_scene = true
 extents = Vector2( 257.357, 28 )
 
+[sub_resource type="ShaderMaterial" id=61]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [sub_resource type="CapsuleShape2D" id=57]
 resource_local_to_scene = true
 radius = 58.5
 height = 326.31
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2032, 3 )
+rotation = 1.57051
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -185,6 +209,7 @@ position = Vector2( 258.774, 0 )
 shape = SubResource( 47 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 59 )
 points = PoolVector2Array( -449, 0, 68.548, 0 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]
@@ -222,6 +247,7 @@ position = Vector2( 258.774, 0 )
 shape = SubResource( 49 )
 
 [node name="Laser" parent="Beam2/LaserArea" index="2"]
+material = SubResource( 60 )
 points = PoolVector2Array( -449, 0, 68.548, 0 )
 
 [node name="EndPortal" parent="Beam2/LaserArea/Laser" index="1"]
@@ -403,6 +429,7 @@ position = Vector2( 257.357, 0 )
 shape = SubResource( 58 )
 
 [node name="Laser" parent="Beam3/LaserArea" index="2"]
+material = SubResource( 61 )
 points = PoolVector2Array( -449, 0, 65.713, 0 )
 
 [node name="EndPortal" parent="Beam3/LaserArea/Laser" index="1"]

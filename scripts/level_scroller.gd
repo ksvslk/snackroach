@@ -12,7 +12,7 @@ func _ready():
 		button.button_text = str(index + 1)
 		button.disabled = !state
 		add_child(button)
-		button.connect("pressed", get_parent().get_parent(), "switch_level", [index + 1])
+		button.connect("pressed", get_parent(), "switch_level", [index + 1])
 
 	yield(get_tree(), "node_added")
 	var safe_area_position_y = OS.get_window_safe_area().position.y

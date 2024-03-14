@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/BlackHole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=9]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 204.188
@@ -22,7 +23,23 @@ light_mode = 2
 resource_local_to_scene = true
 extents = Vector2( 514.011, 28 )
 
+[sub_resource type="ShaderMaterial" id=54]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id=55]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [node name="Level" type="Node2D"]
+position = Vector2( 2024, -10 )
+rotation = 1.5706
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -136,6 +153,7 @@ position = Vector2( 514.011, 0 )
 shape = SubResource( 53 )
 
 [node name="Laser" parent="Beam2/LaserArea" index="2"]
+material = SubResource( 54 )
 points = PoolVector2Array( -449, 0, 579.023, 1.42297 )
 
 [node name="EndPortal" parent="Beam2/LaserArea/Laser" index="1"]
@@ -157,6 +175,7 @@ position = Vector2( 514.011, 0 )
 shape = SubResource( 53 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 55 )
 points = PoolVector2Array( -449, 0, 579.023, 1.42297 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]

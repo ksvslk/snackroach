@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/Spider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=10]
 [ext_resource path="res://scripts/debug_line.gd" type="Script" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -19,9 +20,23 @@ height = 380.035
 resource_local_to_scene = true
 extents = Vector2( 289.969, 28 )
 
+[sub_resource type="ShaderMaterial" id=57]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [sub_resource type="RectangleShape2D" id=50]
 resource_local_to_scene = true
 extents = Vector2( 353.996, 28 )
+
+[sub_resource type="ShaderMaterial" id=58]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=52]
 vertices = PoolVector2Array( 2090.11, 584.21, 2472.97, 575.702, 2472.97, 998.261, 2087.27, 998.261 )
@@ -49,7 +64,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 1210.96, 1409.48, 1213.8, 2365.2, 1755.47, 2359.53, 1761.14, 1409.48 ) ]
 
 [node name="Level" type="Node2D"]
-position = Vector2( 5.96046e-08, 0 )
+position = Vector2( 2106, -22 )
+rotation = 1.57094
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -147,6 +163,7 @@ position = Vector2( 289.969, 0 )
 shape = SubResource( 49 )
 
 [node name="Laser" parent="Beam2/LaserArea" index="2"]
+material = SubResource( 57 )
 points = PoolVector2Array( -449, 0, 130.939, -1.41296 )
 
 [node name="EndPortal" parent="Beam2/LaserArea/Laser" index="1"]
@@ -173,6 +190,7 @@ position = Vector2( 353.996, 0 )
 shape = SubResource( 50 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 58 )
 points = PoolVector2Array( -449, 0, 258.992, 0 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]

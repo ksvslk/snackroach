@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scripts/debug_notch.gd" type="Script" id=1]
 [ext_resource path="res://scripts/music_button.gd" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://graphics/tv_host.png" type="Texture" id=9]
 [ext_resource path="res://scripts/hat_switch.gd" type="Script" id=10]
 [ext_resource path="res://scenes/LevelSwitcher.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scripts/move_to_safe_area.gd" type="Script" id=12]
 [ext_resource path="res://scripts/master.gd" type="Script" id=13]
 [ext_resource path="res://graphics/gear.svg" type="Texture" id=16]
 [ext_resource path="res://scripts/fps_counter.gd" type="Script" id=17]
@@ -94,11 +93,9 @@ margin_top = 8.0
 margin_right = 182.0
 margin_bottom = 335.0
 mouse_filter = 2
-script = ExtResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
-case = 1
 
 [node name="HBoxContainer" type="VBoxContainer" parent="GamePlayMenu/TapsInfoBar"]
 margin_right = 177.0
@@ -359,9 +356,9 @@ size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GamePlayMenu/OverlayTapsExceeded"]
 margin_left = 420.0
-margin_top = 311.0
+margin_top = 408.0
 margin_right = 1500.0
-margin_bottom = 768.0
+margin_bottom = 671.0
 rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -386,29 +383,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AddTapsForRewarded" parent="GamePlayMenu/OverlayTapsExceeded/VBoxContainer" instance=ExtResource( 8 )]
-self_modulate = Color( 1, 1, 1, 1 )
-margin_top = 194.0
-margin_right = 1080.0
-margin_bottom = 263.0
-mouse_filter = 1
-action_mode = 0
-text = "need_more_clicks"
-icon = null
-flat = false
-icon_align = 0
-__meta__ = {
-"_editor_description_": ""
-}
-android_text = "rewarded_clicks"
-iphone_text = "need_more_clicks"
-
-[node name="HitArea" parent="GamePlayMenu/OverlayTapsExceeded/VBoxContainer/AddTapsForRewarded" instance=ExtResource( 42 )]
-
 [node name="RestartButton" type="Button" parent="GamePlayMenu/OverlayTapsExceeded/VBoxContainer"]
 margin_top = 388.0
 margin_right = 1080.0
-margin_bottom = 484.0
+margin_bottom = 457.0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 18 )
@@ -503,19 +481,15 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SettingsMenu/OptionsContainer"]
+[node name="LevelScroller" type="GridContainer" parent="SettingsMenu/OptionsContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-follow_focus = true
-scroll_horizontal_enabled = false
-
-[node name="LevelScroller" type="GridContainer" parent="SettingsMenu/OptionsContainer/ScrollContainer"]
-margin_right = 1920.0
-size_flags_horizontal = 7
+size_flags_horizontal = 6
+size_flags_vertical = 6
 custom_constants/vseparation = 8
 custom_constants/hseparation = 1
-columns = 5
+columns = 10
 script = ExtResource( 34 )
 __meta__ = {
 "_editor_description_": ""
@@ -554,9 +528,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -476.0
-margin_top = -397.0
+margin_top = -479.0
 margin_right = 476.0
-margin_bottom = 397.0
+margin_bottom = 479.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
@@ -702,6 +676,25 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Quit" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 798.0
+margin_right = 952.0
+margin_bottom = 958.0
+mouse_filter = 1
+custom_constants/hseparation = 20
+custom_fonts/font = ExtResource( 20 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+text = "quit (translate)"
+icon = ExtResource( 27 )
+align = 0
+icon_align = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="DebugNotch" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
@@ -710,14 +703,10 @@ stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
 
-[connection signal="gui_input" from="GamePlayMenu/OverlayButton" to="." method="_on_OverlayButton_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevelForRewarded" to="." method="_on_SkipLevelForRewarded_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" to="." method="_on_SkipLevel_gui_input"]
-[connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/RestartButton" to="." method="_on_RestartButton_gui_input"]
-[connection signal="gui_input" from="GamePlayMenu/OverlayTapsExceeded/VBoxContainer/AddTapsForRewarded" to="." method="_on_AddTapsForRewarded_gui_input"]
-[connection signal="gui_input" from="GamePlayMenu/OverlayTapsExceeded/VBoxContainer/RestartButton" to="." method="_on_RestartButton_gui_input"]
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/BackButton" to="SettingsMenu/OptionsContainer" method="_on_BackButton_gui_input"]
-[connection signal="pressed" from="SettingsMenu/OptionsContainer/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_pressed"]
+[connection signal="gui_input" from="SettingsMenu/OptionsContainer/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Previous" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Previous_pressed"]
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/SelectedHat" to="SettingsMenu/OptionsContainer" method="_on_SelectedHat_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Next" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Next_pressed"]
@@ -725,3 +714,4 @@ bus = "Music"
 [connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/MusicButton" to="SettingsMenu/OptionsContainer/OptionsList/MusicButton" method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/SoundButton" to="SettingsMenu/OptionsContainer/OptionsList/SoundButton" method="_on_SoundButton_toggled"]
 [connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" to="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" method="_on_HapticFeedbackButton_toggled"]
+[connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/Quit" to="SettingsMenu/OptionsContainer" method="_on_Quit_pressed"]

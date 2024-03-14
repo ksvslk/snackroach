@@ -18,7 +18,6 @@ onready var score = $GamePlayMenu/OverlayButton/TV/Info/Score
 onready var compliment = $GamePlayMenu/OverlayButton/TV/Info/Compliment
 
 onready var overlay_taps_exceeded = $GamePlayMenu/OverlayTapsExceeded
-onready var add_taps_for_rewarded = $GamePlayMenu/OverlayTapsExceeded/VBoxContainer/AddTapsForRewarded
 onready var hat_switch = $SettingsMenu/OptionsContainer/OptionsList/HatSwitch
 
 onready var level_label = $GamePlayMenu/TapsInfoBar/HBoxContainer/LevelNr
@@ -35,10 +34,10 @@ var end_scene = null
 var new_score_and_diff = null
 
 enum GameState {
-	PLAYING,
-	FAIL,
-	COMPLETE,
-	PAUSED
+	PLAYING = 0,
+	FAIL = 1,
+	COMPLETE = 2,
+	PAUSED = 3
 }
 
 var game_state = GameState.PLAYING
@@ -123,7 +122,6 @@ func _load_level(level_nr: int, rewards_count:int):
 
 
 func change_ui_for_unlimited_tap():
-	add_taps_for_rewarded.visible = false
 	current_total_taps = "INF"
 	total_taps.text = str(total_taps_tapped) + " / " + str(current_total_taps)
 
@@ -159,16 +157,10 @@ func _increase_taps() -> void:
 
 
 func _show_screen_of_taps_exceeded():
+	overlay_taps_exceeded.show()
+	game_state = GameState.FAIL
+	overlay_button.mouse_filter = Control.MOUSE_FILTER_STOP
 	Data.unlock_regular_achievements_in_bulk()
-	if OS.get_name() == "Android":
-		overlay_taps_exceeded.show()
-		add_taps_for_rewarded.text = "+" + str(level.rewarded_taps_amount) + " " + tr("rewarded_clicks")
-		add_taps_for_rewarded.activate_button_when_conditions_met()
-	elif OS.get_name() == "iOS" || OS.get_name() == "OSX":
-		overlay_button.mouse_filter = Control.MOUSE_FILTER_STOP
-		overlay_taps_exceeded.show()
-		add_taps_for_rewarded.activate_button_when_conditions_met()
-		
 
 
 func _set_over_par_colors(par:int, new_taps:int):
@@ -186,6 +178,7 @@ func _connect_signals():
 
 
 func _on_Level_game_over():
+	print("game over _on_Level_game_over: ", game_state)
 	Data.unlock_regular_achievements_in_bulk()
 	if not overlay_taps_exceeded.visible and not overlay_button.visible:
 		game_state = GameState.FAIL
@@ -246,6 +239,7 @@ func _log_event():
 
 
 func _on_Level_finished():
+	print("game_state _on_Level_finished: ", game_state)
 	game_state = GameState.COMPLETE
 	_animate_overlay_button()
 	var info = Data.get_finish_line_info(total_taps_tapped, level.par, level.snacks.snacks_count)
@@ -369,7 +363,6 @@ func _reset_overlay_button():
 	overlay_button.visible = false
 	
 	skip_level_for_rewarded.visible = false
-	add_taps_for_rewarded.visible = false
 	
 	skip_level.visible = false
 	continue_button.visible = false
@@ -379,20 +372,17 @@ func _reset_overlay_button():
 	overlay_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
-func _on_OverlayButton_gui_input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
-		print("TERE")
+func _input(event):
+	if event.is_action_pressed("ui_accept") :
+		print("MASTER CLICK")
 		if game_state == GameState.COMPLETE:
 			_start_next_level()
-
-
-func _input(event):
-	if restart_or_skip.visible && event.is_action_pressed("ui_accept") :
-		if continue_button.visible:
-			_start_next_level()
-		elif $GamePlayMenu/OverlayButton/RestartOrSkip/RestartButton.visible:
+			get_tree().set_input_as_handled()
+		elif game_state == GameState.FAIL:
 			_reset_overlay_button()
 			_restart_level()
+			get_tree().set_input_as_handled()
+		
 
 
 func _add_level_to_scene(level_nr: int):
@@ -487,12 +477,6 @@ func _rewarded_ad_showing_failed():
 	_restart_level()
 
 
-func _on_RestartButton_gui_input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
-		_reset_overlay_button()
-		_restart_level()
-
-
 func _on_SkipLevelForRewarded_gui_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
 		if OS.get_name() == "Android":
@@ -501,18 +485,10 @@ func _on_SkipLevelForRewarded_gui_input(event: InputEvent):
 		elif OS.get_name() == "iOS":
 			$SettingsMenu/OptionsContainer._on_Bonus_pressed(false, true)
 
+
 func _on_SkipLevel_gui_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
 		_start_next_level()
-
-
-func _on_AddTapsForRewarded_gui_input(event: InputEvent):
-	if event is InputEventScreenTouch and event.is_pressed():
-		if OS.get_name() == "Android":
-			if GPack.is_rewarded_ad_loaded():
-				GPack.show_rewarded_ad("add_taps_rewarded")
-		elif OS.get_name() == "iOS":
-			$SettingsMenu/OptionsContainer._on_Bonus_pressed(true, false)
 
 
 func _print_license():

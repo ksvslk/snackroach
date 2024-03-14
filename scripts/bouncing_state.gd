@@ -12,13 +12,11 @@ func enter(_msg: Dictionary = {}) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			if last_state == C.drunk_walking_state:
-				state_machine.transition_to(C.drunk_walking_state)
-			else:
-				state_machine.transition_to(C.walking_state)
-			Data.increase_taps()
+	if last_state == C.drunk_walking_state:
+		state_machine.transition_to(C.drunk_walking_state)
+	else:
+		state_machine.transition_to(C.walking_state)
+	Data.increase_taps()
 
 
 func physics_update(_delta: float) -> void:

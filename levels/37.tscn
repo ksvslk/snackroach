@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -8,12 +8,19 @@
 [ext_resource path="res://scenes/RockThrower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/SpikesSquare.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
+[ext_resource path="res://shader/RealBeltShader.tres" type="Shader" id=9]
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Conveyer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 204.188
 height = 743.029
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed = 0
 
 [sub_resource type="RectangleShape2D" id=10]
 resource_local_to_scene = true
@@ -25,6 +32,8 @@ radius = 58.5
 height = 392.104
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2144, -23 )
+rotation = 1.56941
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -55,17 +64,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, 496.724 )
@@ -88,6 +91,7 @@ rotation = 1.57079
 speed = 400
 
 [node name="TextureRect" parent="Conveyer" index="0"]
+material = SubResource( 11 )
 margin_left = -699.0
 margin_top = 3991.0
 margin_right = 3137.0

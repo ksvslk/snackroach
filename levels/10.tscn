@@ -18,6 +18,8 @@ blend_mode = 1
 light_mode = 2
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1973, 17 )
+rotation = 1.57124
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {

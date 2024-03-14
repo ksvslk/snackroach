@@ -14,6 +14,8 @@ radius = 204.188
 height = 743.029
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2049.24, 8.50916 )
+rotation = 1.57245
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -27,7 +29,8 @@ rewarded_taps_amount = 3
 layer = -2
 
 [node name="Floor" type="TileMap" parent="FloorCanvas" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( 221, -37.8484 )
+position = Vector2( 2086, 229 )
+rotation = 1.57245
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true
@@ -48,17 +51,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 626.749, -107.337 )

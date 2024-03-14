@@ -99,6 +99,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 2007.87, 4903.39, 1999.36, 5357.15, 2801.94, 5362.82, 2804.77, 4897.72 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2031, 8 )
+rotation = 1.57094
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {

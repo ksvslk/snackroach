@@ -27,6 +27,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 0, 4, 6 ), PoolIntA
 outlines = [ PoolVector2Array( 1958.54, 1232.86, 1905.47, 1182.81, 513.311, 1199.62, 416.888, 1281.86, 385.692, 5022.5, 414.052, 5067.88, 462.263, 5084.9, 2620.44, 5093.4, 2679.99, 5031.01, 2691.34, 3190.47, 2643.12, 3136.58, 901.839, 3125.24, 842.283, 3156.44, 847.955, 4585.76, 890.495, 4650.99, 2132.65, 4642.48, 2223.4, 4580.09, 2234.74, 3615.86, 2186.53, 3567.65, 1321.56, 3561.98, 1270.51, 3615.86, 1289.26, 4170.08, 1318.73, 4203.33, 1437.9, 4205.08, 1475.39, 4166.16, 1384.58, 3706.81, 1381.12, 3649.89, 1408.6, 3615.86, 2143.99, 3615.86, 2180.86, 3649.89, 2180.86, 4537.55, 2098.62, 4597.11, 930.198, 4588.6, 893.331, 4548.9, 890.495, 3193.3, 938.706, 3167.78, 2600.58, 3176.29, 2634.62, 3207.48, 2631.78, 4977.13, 2575.06, 5031.01, 493.459, 5028.18, 450.919, 5019.67, 425.396, 4988.47, 459.427, 1344.25, 547.342, 1273.35, 1905.77, 1267.68 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2098, -2 )
+rotation = 1.571
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -80,9 +82,6 @@ on_color = Color( 1, 0.960784, 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava/ButtonArea"]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="BeamButton" type="StaticBody2D" parent="Lava/ButtonArea"]
 position = Vector2( -155, -656 )
@@ -93,9 +92,6 @@ script = ExtResource( 9 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Lava/ButtonArea/BeamButton"]
 position = Vector2( 155, 656.5 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Switch" type="AudioStreamPlayer2D" parent="Lava/ButtonArea"]
 stream = ExtResource( 12 )
@@ -110,17 +106,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, 496.724 )

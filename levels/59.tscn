@@ -35,6 +35,8 @@ shader_param/speed = 3.435
 shader_param/angle = 0.0
 
 [node name="Level" type="Node2D"]
+position = Vector2( -300, 1081 )
+rotation = -1.57071
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -87,6 +89,9 @@ scale = Vector2( 1.2, 1.2 )
 
 [node name="Shelter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 969.902, 3607.35 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter" index="0"]
 position = Vector2( -0.000244141, 0.000732422 )
@@ -100,6 +105,9 @@ shape = SubResource( 49 )
 
 [node name="Shelter2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1256.33, 5039.52 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter2" index="0"]
 position = Vector2( -28.3595, 0.000244141 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/Gate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=10]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=11]
 [ext_resource path="res://scripts/debug_line.gd" type="Script" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -35,7 +36,16 @@ outlines = [ PoolVector2Array( 516.146, -192.846, 513.311, 147.47, 215.534, 136.
 resource_local_to_scene = true
 extents = Vector2( 353.779, 28 )
 
+[sub_resource type="ShaderMaterial" id=48]
+resource_local_to_scene = true
+shader = ExtResource( 11 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [node name="Level" type="Node2D"]
+position = Vector2( 1962, -4 )
+rotation = 1.57137
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -70,9 +80,6 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 snacks_tiles_range = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
@@ -125,6 +132,7 @@ position = Vector2( 353.779, 0 )
 shape = SubResource( 47 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 48 )
 points = PoolVector2Array( -449, 0, 258.558, 1.42188 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]

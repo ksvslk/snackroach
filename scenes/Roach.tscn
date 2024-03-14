@@ -6534,7 +6534,7 @@ position = Vector2( 76.3655, 5.56663 )
 rotation = 0.365117
 scale = Vector2( 1.24224, 1.24224 )
 frames = SubResource( 28 )
-frame = 3
+frame = 5
 speed_scale = 5.0
 playing = true
 
@@ -6553,7 +6553,7 @@ position = Vector2( -29.7427, -63.0864 )
 rotation = -2.04888
 scale = Vector2( 1.35447, 1.35447 )
 frames = SubResource( 28 )
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 
@@ -6562,7 +6562,7 @@ use_parent_material = true
 position = Vector2( -76.3799, -0.701904 )
 rotation = -2.78298
 frames = SubResource( 28 )
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 
@@ -6572,7 +6572,7 @@ position = Vector2( -45.7672, 73.7222 )
 rotation = -4.16359
 scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 28 )
-frame = 4
+frame = 6
 speed_scale = 5.0
 playing = true
 
@@ -6582,7 +6582,7 @@ position = Vector2( 42.7166, 79.9899 )
 rotation = -4.99541
 scale = Vector2( 1.5471, 1.5471 )
 frames = SubResource( 28 )
-frame = 2
+frame = 4
 speed_scale = 2.0
 playing = true
 

@@ -20,6 +20,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4 ), PoolIntArray( 
 outlines = [ PoolVector2Array( 1097.52, 575.702, 1888.76, 564.358, 1886.1, 2931.76, 2021.29, 3089.9, 2564.13, 3096.05, 2637.24, 3178.9, 2632, 5156.12, 2551.82, 5241.71, 534.049, 5262.72, 453.652, 5184.44, 451.037, 3178.87, 525.932, 3088.37, 987.814, 3088.37, 1113.81, 2980.57 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1969.45, -3.07599 )
+rotation = 1.57071
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -37,7 +39,8 @@ enemy_path_shown = false
 layer = -2
 
 [node name="Floor" type="TileMap" parent="FloorCanvasLayer" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( 4.00001, -118.924 )
+position = Vector2( 2089, 0.999992 )
+rotation = 1.57071
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true
@@ -58,17 +61,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, -337.265 )
@@ -124,9 +121,6 @@ inital_tempo = 6
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1534.26, 3839.9 )

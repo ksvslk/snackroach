@@ -16,8 +16,6 @@ func physics_update(_delta: float) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			state_machine.transition_to(C.walking_state)
-			Data.increase_taps()
+	state_machine.transition_to(C.walking_state)
+	Data.increase_taps()
 

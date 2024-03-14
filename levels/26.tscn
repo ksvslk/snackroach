@@ -22,6 +22,8 @@ radius = 204.188
 height = 743.029
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1969, -7 )
+rotation = 1.572
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -73,9 +75,6 @@ on_color = Color( 1, 0.960784, 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava/ButtonArea"]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="BeamButton" type="StaticBody2D" parent="Lava/ButtonArea"]
 position = Vector2( -155, -656 )
@@ -86,9 +85,6 @@ script = ExtResource( 12 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Lava/ButtonArea/BeamButton"]
 position = Vector2( 155, 656.5 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Switch" type="AudioStreamPlayer2D" parent="Lava/ButtonArea"]
 stream = ExtResource( 13 )
@@ -103,17 +99,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 706.157, -337.265 )

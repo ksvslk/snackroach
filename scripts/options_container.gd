@@ -5,29 +5,19 @@ onready var back_button = $BackButton
 onready var options_list = $OptionsList
 onready var options = $Options
 onready var menu_active_overlay = $MenuActiveOverlay
-onready var scroll_container = $ScrollContainer
+onready var scroll_container = $LevelScroller
 
 onready var meister = get_parent().get_parent() as Master
 var currently_visible_suboption = null
 
 signal switch_level
 
-
-func _ready():
-	if OS.get_name() != "OSX":
-		rect_position.y -= C.get_bottom_safe_margin()
-
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_on_BackButton_pressed()
-
-func _on_Options_pressed():
-	menu_active_overlay.visible = true
-	options_list.visible = true
-	currently_visible_suboption = options_list
-	back_button.visible = true
-	_hide_all_menu_buttons()
-
+	elif event.is_action_pressed("open_options"):
+		if options_list.visible == false:
+			_open_options()
 
 func _on_Levels_pressed():
 	scroll_container.visible = true
@@ -75,3 +65,19 @@ func _on_BackButton_gui_input(event):
 func _on_SelectedHat_gui_input(event):
 	if event is InputEventScreenTouch and event.is_pressed():
 		_on_BackButton_pressed()
+
+
+func _on_Quit_pressed():
+	get_tree().quit()
+
+func _open_options():
+	menu_active_overlay.visible = true
+	options_list.visible = true
+	currently_visible_suboption = options_list
+	back_button.visible = true
+	_hide_all_menu_buttons()
+
+
+func _on_Options_gui_input(event):
+	if event.is_action_pressed("ui_accept"):
+		_open_options()

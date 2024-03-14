@@ -14,6 +14,8 @@ radius = 204.188
 height = 743.029
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2127, -1 )
+rotation = 1.5708
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -44,17 +46,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( -484.951, 1023.79 )
@@ -67,7 +63,6 @@ tile_data = PoolIntArray( 589844, 48, 0, 589845, 58, 0, 589846, 58, 0, 589847, 5
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1539.93, 3573.32 )
-rotation = 1.57079
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Roof" type="TileMap" parent="." groups=["tappable"]]

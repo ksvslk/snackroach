@@ -16,6 +16,8 @@ radius = 204.188
 height = 743.029
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2220.45, 12.6677 )
+rotation = 1.57044
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -34,7 +36,8 @@ layer = -2
 follow_viewport_enable = true
 
 [node name="Floor" type="TileMap" parent="FloorCanvas" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( 4.00001, -118.924 )
+position = Vector2( 2340, 17 )
+rotation = 1.57044
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true
@@ -119,7 +122,8 @@ throwing_enabled = false
 follow_viewport_enable = true
 
 [node name="Checkpoint" parent="CanvasLayer2" instance=ExtResource( 9 )]
-position = Vector2( 339, 1508 )
+position = Vector2( 709, 356 )
+rotation = 1.57044
 monitoring = true
 monitorable = true
 __meta__ = {
@@ -132,7 +136,7 @@ path_to_next_checkpoint = NodePath("../Checkpoint2")
 
 [node name="Checkpoint2" parent="CanvasLayer2" instance=ExtResource( 9 )]
 visible = false
-position = Vector2( 547, 714 )
+position = Vector2( 1524, 554 )
 monitoring = true
 monitorable = true
 __meta__ = {

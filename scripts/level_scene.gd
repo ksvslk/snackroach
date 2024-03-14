@@ -63,13 +63,13 @@ func activate_shield() -> void:
 
 
 func restart():
-	tapping_enabled = true
 	roach.foodgate_reached = false
 	roach.global_position = roach.starting_position
 	roach.global_rotation = roach.starting_rotation
 	roach.state_machine.transition_to(C.idle_state)
 	get_tree().call_group("RestorableTilemap", "restore_original_tiles")
 	rock_thrower.start_throwing()
+	tapping_enabled = true
 
 
 func _on_Roach_dead():
@@ -100,20 +100,21 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
+		print("LEVEL CLICK")
 		if event is InputEventMouseButton && tapping_enabled:
 			print("Mouse click")
 			roach.cursor_position = get_global_mouse_position()
 			roach.state_machine.state.handle_input(event)
-			#var tap_mark = load("res://scenes/TapMark.tscn").instance()
-			#add_child(tap_mark)
-			#tap_mark.set("global_position", roach.cursor_position)
+			var tap_mark = load("res://scenes/TapMark.tscn").instance()
+			add_child(tap_mark)
+			tap_mark.set("global_position", roach.cursor_position)
 			GPack.perform_haptic_feedback(C.tap_vibration)
 		elif event is InputEventJoypadButton && tapping_enabled:
 			print("Joy button click")
 			roach.cursor_position = m
 			roach.state_machine.state.handle_input(event)
-			#var tap_mark = load("res://scenes/TapMark.tscn").instance()
-			#add_child(tap_mark)
-			#tap_mark.set("global_position", roach.cursor_position)
+			var tap_mark = load("res://scenes/TapMark.tscn").instance()
+			add_child(tap_mark)
+			tap_mark.set("global_position", roach.cursor_position)
 			GPack.perform_haptic_feedback(C.tap_vibration)
 	

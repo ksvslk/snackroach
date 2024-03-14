@@ -14,6 +14,8 @@ radius = 204.188
 height = 408.382
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1959.45, 3.92401 )
+rotation = 1.57053
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -27,7 +29,8 @@ rewarded_taps_amount = 4
 layer = -2
 
 [node name="Floor" type="TileMap" parent="FloorCanvasLayer" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( -234, -118.924 )
+position = Vector2( 2078, -231 )
+rotation = 1.57053
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true

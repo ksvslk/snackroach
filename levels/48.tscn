@@ -13,6 +13,8 @@ radius = 204.188
 height = 521.822
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2003, 5 )
+rotation = 1.57064
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {

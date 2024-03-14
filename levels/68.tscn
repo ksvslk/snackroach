@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/snacks.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Roach.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/RockThrower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/BlackHole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=10]
@@ -25,9 +26,23 @@ height = 391.165
 resource_local_to_scene = true
 extents = Vector2( 193.547, 28 )
 
+[sub_resource type="ShaderMaterial" id=62]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [sub_resource type="RectangleShape2D" id=49]
 resource_local_to_scene = true
 extents = Vector2( 193.547, 28 )
+
+[sub_resource type="ShaderMaterial" id=63]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
 
 [sub_resource type="CapsuleShape2D" id=51]
 resource_local_to_scene = true
@@ -45,6 +60,13 @@ extents = Vector2( 213.235, 75.2941 )
 [sub_resource type="RectangleShape2D" id=54]
 resource_local_to_scene = true
 extents = Vector2( 419.006, 28 )
+
+[sub_resource type="ShaderMaterial" id=64]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=56]
 vertices = PoolVector2Array( 2606.26, 1775.32, 2200.71, 1772.48, 2192.21, 1647.7, 2716.86, 1661.88, 2776.42, 1721.43, 2637.45, 1854.72, 2635.96, 2219.96, 2770.74, 2356.69, 2699.84, 2407.74, 2600.76, 2251.4, 1467.11, 2249.05, 1361.27, 2416.25, 1304.55, 2370.87, 1298.27, 2142.35, 1415.15, 2189.37, 1407.89, 1906.41, 1255.64, 2098.62, 1359.29, 1857.9, 289.269, 2098.62, 294.941, 1539.93, 1006.77, 1860.4, 998.262, 1537.1 )
@@ -76,6 +98,8 @@ resource_local_to_scene = true
 extents = Vector2( 166.733, 88.2759 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2030, 6.99999 )
+rotation = 1.57167
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -186,6 +210,7 @@ position = Vector2( 193.547, 0 )
 shape = SubResource( 47 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 62 )
 points = PoolVector2Array( -449, 0, -61.9062, -1.41431 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]
@@ -230,6 +255,7 @@ position = Vector2( 193.547, 0 )
 shape = SubResource( 49 )
 
 [node name="Laser" parent="Beam2/LaserArea" index="2"]
+material = SubResource( 63 )
 points = PoolVector2Array( -449, 0, -61.9067, -1.41455 )
 
 [node name="EndPortal" parent="Beam2/LaserArea/Laser" index="1"]
@@ -543,6 +569,9 @@ position = Vector2( 2010.7, 3828.56 )
 
 [node name="Shelter" parent="." instance=ExtResource( 16 )]
 position = Vector2( 382.856, 5087.73 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter" index="0"]
 position = Vector2( -17.0162, -28.3591 )
@@ -554,6 +583,9 @@ shape = SubResource( 52 )
 
 [node name="Shelter5" parent="." instance=ExtResource( 16 )]
 position = Vector2( 380.02, 4063.95 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter5" index="0"]
 position = Vector2( -17.0162, -28.3591 )
@@ -610,6 +642,9 @@ position = Vector2( 365.84, 1780.99 )
 
 [node name="Shelter2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1372.61, 1409.48 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter2" index="0"]
 tile_data = PoolIntArray( 65533, 233, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 213, 0, 3, 213, 0, 4, 213, 0, 5, 213, 0, 6, 233, 0, 131069, 205, 0, 131070, 233, 0, 131071, 233, 0, 65536, 233, 0, 65537, 233, 0, 65538, 233, 0, 65539, 233, 0, 65540, 233, 0, 65541, 233, 0, 65542, 205, 0, 196605, 205, 0, 196606, 233, 0, 131073, 233, 0, 131074, 233, 0, 131077, 233, 0, 131078, 205, 0, 262141, 233, 0, 262142, 213, 0, 262143, 213, 0, 196608, 213, 0, 196609, 213, 0, 196610, 213, 0, 196611, 213, 0, 196612, 213, 0, 196613, 213, 0, 196614, 233, 0 )
@@ -633,6 +668,7 @@ position = Vector2( 419.006, 0 )
 shape = SubResource( 54 )
 
 [node name="Laser" parent="Beam3/LaserArea" index="2"]
+material = SubResource( 64 )
 points = PoolVector2Array( -449, 0, 389.012, 1.4231 )
 
 [node name="EndPortal" parent="Beam3/LaserArea/Laser" index="1"]
@@ -670,6 +706,9 @@ enabled = false
 
 [node name="Shelter3" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1687.4, 2796.27 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter3" index="0"]
 tile_data = PoolIntArray( 65533, 233, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 233, 0, 131069, 205, 0, 131071, 233, 0, 65537, 233, 0, 65538, 205, 0, 196605, 205, 0, 196606, 233, 0, 131072, 233, 0, 131074, 205, 0, 262141, 233, 0, 262142, 213, 0, 262143, 213, 0, 196608, 213, 0, 196609, 213, 0, 196610, 233, 0 )
@@ -681,6 +720,9 @@ shape = SubResource( 61 )
 
 [node name="Shelter4" parent="." instance=ExtResource( 16 )]
 position = Vector2( 941.542, 3020.31 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter4" index="0"]
 tile_data = PoolIntArray( 65533, 233, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 233, 0, 131069, 205, 0, 131071, 233, 0, 65537, 233, 0, 65538, 205, 0, 196605, 205, 0, 196606, 233, 0, 131072, 233, 0, 131074, 205, 0, 262141, 233, 0, 262142, 213, 0, 262143, 213, 0, 196608, 213, 0, 196609, 213, 0, 196610, 233, 0 )
@@ -693,6 +735,9 @@ shape = SubResource( 61 )
 [node name="Shelter6" parent="." instance=ExtResource( 16 )]
 position = Vector2( 2155.34, 5314.61 )
 rotation = -1.57079
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter6" index="0"]
 tile_data = PoolIntArray( 65533, 233, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 233, 0, 131069, 205, 0, 131071, 233, 0, 65537, 233, 0, 65538, 205, 0, 196605, 205, 0, 196606, 233, 0, 131072, 233, 0, 131074, 205, 0, 262141, 233, 0, 262142, 213, 0, 262143, 213, 0, 196608, 213, 0, 196609, 213, 0, 196610, 233, 0 )
@@ -705,6 +750,9 @@ shape = SubResource( 61 )
 [node name="Shelter7" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1131.55, 771.384 )
 rotation = -1.57079
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shelter" parent="Shelter7" index="0"]
 tile_data = PoolIntArray( 65532, 233, 0, 65533, 213, 0, 65534, 213, 0, 65535, 213, 0, 0, 213, 0, 1, 213, 0, 2, 233, 0, 131068, 205, 0, 131070, 233, 0, 131071, 233, 0, 65537, 233, 0, 65538, 205, 0, 196604, 205, 0, 196605, 233, 0, 131072, 233, 0, 131074, 205, 0, 262140, 233, 0, 262141, 213, 0, 262142, 213, 0, 262143, 213, 0, 196608, 213, 0, 196609, 213, 0, 196610, 233, 0 )

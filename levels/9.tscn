@@ -76,6 +76,8 @@ resource_local_to_scene = true
 extents = Vector2( 1599.49, 344.571 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1990.45, 1.92398 )
+rotation = 1.5704
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -94,7 +96,8 @@ layer = -2
 follow_viewport_enable = true
 
 [node name="Floor" type="TileMap" parent="FloorCanvas" groups=["RestorableTilemap", "tappable"]]
-position = Vector2( 4.00001, -118.924 )
+position = Vector2( 2108, 6 )
+rotation = 1.5704
 scale = Vector2( 0.352613, 0.352613 )
 tile_set = ExtResource( 8 )
 collision_use_kinematic = true
@@ -131,7 +134,7 @@ tile_data = PoolIntArray( 720910, 48, 0, 720911, 58, 0, 720912, 58, 0, 720913, 5
 
 [node name="Belt" parent="." instance=ExtResource( 7 )]
 position = Vector2( -419.724, -2243.25 )
-direction = 3
+direction = 1
 speed = 200
 
 [node name="TextureRect" parent="Belt" index="0"]
@@ -149,7 +152,6 @@ shape = SubResource( 12 )
 
 [node name="Belt2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 337.48, 862.135 )
-direction = 2
 speed = 200
 
 [node name="TextureRect" parent="Belt2" index="0"]
@@ -167,6 +169,7 @@ shape = SubResource( 15 )
 [node name="Belt3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4650.99, 1678.89 )
 rotation = 1.57079
+direction = 3
 speed = 200
 
 [node name="TextureRect" parent="Belt3" index="0"]
@@ -184,7 +187,7 @@ shape = SubResource( 17 )
 [node name="Belt4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 6743.94, 1860.4 )
 rotation = 1.57079
-direction = 1
+direction = 2
 speed = 200
 
 [node name="TextureRect" parent="Belt4" index="0"]

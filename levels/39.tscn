@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scripts/rockthrower_temp_controller.gd" type="Script" id=9]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 204.188
@@ -18,7 +19,16 @@ height = 743.029
 resource_local_to_scene = true
 extents = Vector2( 705.44, 28 )
 
+[sub_resource type="ShaderMaterial" id=48]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [node name="Level" type="Node2D"]
+position = Vector2( 2203, 17 )
+rotation = 1.57092
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -114,6 +124,7 @@ position = Vector2( 705.44, 0 )
 shape = SubResource( 47 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 48 )
 points = PoolVector2Array( -449, 0, 627.193, 3.24847, 961.879, 4.25879 )
 
 [node name="EndPortal" parent="Beam/LaserArea/Laser" index="1"]

@@ -20,7 +20,9 @@ radius = 58.5
 height = 832.247
 
 [node name="Level" type="Node2D"]
-scale = Vector2( 0.352613, 0.352613 )
+position = Vector2( 1995, -23 )
+rotation = 1.56951
+scale = Vector2( 0.343444, 0.343444 )
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
@@ -50,17 +52,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( -484.951, -314.793 )

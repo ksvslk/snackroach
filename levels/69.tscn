@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/snacks.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Roach.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/RockThrower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/BlackHole.tscn" type="PackedScene" id=10]
@@ -23,6 +24,13 @@ height = 691.778
 resource_local_to_scene = true
 extents = Vector2( 321.165, 28 )
 
+[sub_resource type="ShaderMaterial" id=56]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [sub_resource type="CapsuleShape2D" id=49]
 resource_local_to_scene = true
 radius = 58.5
@@ -31,6 +39,13 @@ height = 237.828
 [sub_resource type="RectangleShape2D" id=50]
 resource_local_to_scene = true
 extents = Vector2( 162.351, 28 )
+
+[sub_resource type="ShaderMaterial" id=57]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=52]
 vertices = PoolVector2Array( 802.58, 2838.81, 258.073, 2841.64, 277.925, 2027.72, 442.411, 2024.88, 802.58, 1690.24, 561.522, 1888.76, 581.374, 1695.91 )
@@ -51,7 +66,16 @@ outlines = [ PoolVector2Array( 263.745, 2841.64, 277.925, 3111.06, 779.892, 3111
 resource_local_to_scene = true
 extents = Vector2( 322.583, 28 )
 
+[sub_resource type="ShaderMaterial" id=58]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/strength = 0.319
+shader_param/speed = 3.435
+shader_param/angle = 0.0
+
 [node name="Level" type="Node2D"]
+position = Vector2( 2031, 7.00001 )
+rotation = 1.57095
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -146,6 +170,7 @@ position = Vector2( 321.165, 0 )
 shape = SubResource( 47 )
 
 [node name="Laser" parent="Beam/LaserArea" index="2"]
+material = SubResource( 56 )
 points = PoolVector2Array( -449, 0, 193.331, 1.42188 )
 is_editor_hint_on = true
 
@@ -369,6 +394,7 @@ position = Vector2( 162.351, 0 )
 shape = SubResource( 50 )
 
 [node name="Laser" parent="Beam2/LaserArea" index="2"]
+material = SubResource( 57 )
 points = PoolVector2Array( -449, 0, -124.298, -1.41357 )
 
 [node name="EndPortal" parent="Beam2/LaserArea/Laser" index="1"]
@@ -473,6 +499,7 @@ position = Vector2( 322.583, 0 )
 shape = SubResource( 55 )
 
 [node name="Laser" parent="Beam3/LaserArea" index="2"]
+material = SubResource( 58 )
 points = PoolVector2Array( -449, 0, 196.167, -1.41406 )
 
 [node name="EndPortal" parent="Beam3/LaserArea/Laser" index="1"]

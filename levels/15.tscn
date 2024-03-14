@@ -20,6 +20,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ), PoolIntArray( 6, 5, 7 ), PoolI
 outlines = [ PoolVector2Array( 291.812, 5306.82, 278.265, 1134.31, 364.781, 1029.46, 2605.16, 1029.46, 2691.66, 1112.52, 2707.93, 5289.5, 2631.21, 5396.85, 2440.17, 5396.85, 2362.22, 5293.76, 2356.84, 1403.53, 2257.82, 1298.87, 1806.27, 1298.87, 1681.8, 1394.81, 1684.51, 5107.07, 1602.1, 5190.5, 1424.06, 5191.96, 1337.92, 5102.57, 1310.98, 1394.87, 1225.14, 1296.04, 733.915, 1291.22, 646.276, 1368.85, 629.927, 5319.86, 547.23, 5401.14, 369.047, 5398.14 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2089, 4 )
+rotation = 1.57026
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -54,9 +56,6 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5070.56, -357.278 )

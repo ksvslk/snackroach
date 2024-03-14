@@ -39,6 +39,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 0, 4, 6, 7, 8 ) ]
 outlines = [ PoolVector2Array( 1676.06, 1290.37, 1673.22, 632.421, 1789.5, 467.935, 2572.22, 465.099, 2648.8, 592.718, 2654.47, 1026.62, 2572.22, 1117.37, 1936.97, 1120.21, 1931.3, 1293.2 ) ]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 2171, -19 )
+rotation = 1.56921
 scale = Vector2( 0.352613, 0.352613 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -69,17 +71,11 @@ position = Vector2( -5535.81, -618.453 )
 tile_set = ExtResource( 3 )
 format = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snack"]
 position = Vector2( -5067.88, -408.59 )
 rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="TileMap" parent="." groups=["tappable"]]
 position = Vector2( 11.3439, 797.337 )

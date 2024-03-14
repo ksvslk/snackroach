@@ -413,7 +413,7 @@ func _set_initial_launch_settings():
 		if i == 1:
 			_config.set_value(String(i), C.unlocked, 1)
 		else:
-			_config.set_value(String(i), C.unlocked, 0)
+			_config.set_value(String(i), C.unlocked, 1)
 	_config.save(_path)
 
 
