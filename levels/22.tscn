@@ -86,6 +86,7 @@ script = ExtResource( 2 )
 [node name="Conveyer" parent="." instance=ExtResource( 10 )]
 position = Vector2( 5686.12, 1761.14 )
 rotation = 1.57079
+direction = 3
 speed = 150
 
 [node name="TextureRect" parent="Conveyer" index="0"]

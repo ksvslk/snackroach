@@ -374,7 +374,6 @@ func _reset_overlay_button():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") :
-		print("MASTER CLICK")
 		if game_state == GameState.COMPLETE:
 			_start_next_level()
 			get_tree().set_input_as_handled()
@@ -382,7 +381,6 @@ func _input(event):
 			_reset_overlay_button()
 			_restart_level()
 			get_tree().set_input_as_handled()
-		
 
 
 func _add_level_to_scene(level_nr: int):

@@ -88,6 +88,7 @@ scale = Vector2( 1.2, 1.2 )
 [node name="Conveyer" parent="." instance=ExtResource( 11 )]
 position = Vector2( 6624.83, 1837.71 )
 rotation = 1.57079
+direction = 3
 speed = 400
 
 [node name="TextureRect" parent="Conveyer" index="0"]

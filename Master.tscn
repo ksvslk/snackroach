@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scripts/debug_notch.gd" type="Script" id=1]
 [ext_resource path="res://scripts/music_button.gd" type="Script" id=2]
@@ -11,7 +11,10 @@
 [ext_resource path="res://graphics/tv_host.png" type="Texture" id=9]
 [ext_resource path="res://scripts/hat_switch.gd" type="Script" id=10]
 [ext_resource path="res://scenes/LevelSwitcher.tscn" type="PackedScene" id=11]
+[ext_resource path="res://styles/FocusedSubmenuButton.tres" type="StyleBox" id=12]
 [ext_resource path="res://scripts/master.gd" type="Script" id=13]
+[ext_resource path="res://graphics/focused_back.svg" type="Texture" id=14]
+[ext_resource path="res://styles/FocusedMenuButton.tres" type="StyleBox" id=15]
 [ext_resource path="res://graphics/gear.svg" type="Texture" id=16]
 [ext_resource path="res://scripts/fps_counter.gd" type="Script" id=17]
 [ext_resource path="res://fonts/LongerTextButton.tres" type="DynamicFont" id=18]
@@ -78,7 +81,6 @@ atlas = ExtResource( 45 )
 region = Rect2( 842, 178, 66, 69 )
 
 [node name="Master" type="Node"]
-pause_mode = 2
 script = ExtResource( 13 )
 
 [node name="Place" type="Node" parent="."]
@@ -431,6 +433,7 @@ pause_mode = 2
 layer = 2
 
 [node name="OptionsContainer" type="Control" parent="SettingsMenu"]
+process_priority = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -510,11 +513,10 @@ custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 20 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
+custom_styles/focus = ExtResource( 15 )
 custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 icon = ExtResource( 16 )
-flat = true
 icon_align = 1
 expand_icon = true
 __meta__ = {
@@ -548,7 +550,6 @@ __meta__ = {
 }
 
 [node name="Previous" type="TextureButton" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
-modulate = Color( 0.992157, 1, 0, 1 )
 margin_right = 314.0
 margin_bottom = 138.0
 size_flags_horizontal = 3
@@ -556,7 +557,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
-texture_focused = ExtResource( 19 )
+texture_focused = ExtResource( 14 )
 
 [node name="SelectedHat" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
 margin_left = 318.0
@@ -570,7 +571,6 @@ expand = true
 stretch_mode = 6
 
 [node name="Next" type="TextureButton" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
-modulate = Color( 0.992157, 1, 0, 1 )
 margin_left = 814.0
 margin_right = 952.0
 margin_bottom = 138.0
@@ -579,7 +579,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
-texture_focused = ExtResource( 19 )
+texture_focused = ExtResource( 14 )
 flip_h = true
 __meta__ = {
 "_editor_description_": ""
@@ -594,7 +594,7 @@ custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 20 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "levels"
 icon = ExtResource( 27 )
@@ -616,7 +616,7 @@ custom_icons/on = SubResource( 56 )
 custom_icons/off_disabled = SubResource( 57 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
 custom_styles/hover_pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
 pressed = true
@@ -640,7 +640,7 @@ custom_icons/on = SubResource( 56 )
 custom_icons/off_disabled = SubResource( 57 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
 custom_styles/hover_pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
 pressed = true
@@ -664,7 +664,7 @@ custom_icons/on = SubResource( 56 )
 custom_icons/off_disabled = SubResource( 57 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
 custom_styles/hover_pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
 pressed = true
@@ -685,7 +685,7 @@ custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 20 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "quit (translate)"
 icon = ExtResource( 27 )

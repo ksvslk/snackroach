@@ -92,6 +92,7 @@ shape = SubResource( 1 )
 [node name="Conveyer" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4696.37, -408.379 )
 rotation = 1.57079
+direction = 2
 speed = 300
 
 [node name="TextureRect" parent="Conveyer" index="0"]
@@ -108,6 +109,7 @@ shape = SubResource( 11 )
 [node name="Conveyer2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 5771.2, -150.307 )
 rotation = 1.57079
+direction = 2
 speed = 300
 
 [node name="TextureRect" parent="Conveyer2" index="0"]
@@ -124,7 +126,7 @@ shape = SubResource( 12 )
 [node name="Conveyer3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 5124.6, 3556.31 )
 rotation = 1.57079
-direction = 1
+direction = 3
 speed = 300
 
 [node name="TextureRect" parent="Conveyer3" index="0"]

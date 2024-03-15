@@ -4,7 +4,6 @@ var level_button = load("res://scenes/LevelSelectButton.tscn")
 
 func _ready():
 	var levels = Data.get_levels()
-
 	for index in range(0, levels.size()):
 		var button = level_button.instance()
 		var state = levels.values()[index][0] as bool
@@ -13,7 +12,6 @@ func _ready():
 		button.disabled = !state
 		add_child(button)
 		button.connect("pressed", get_parent(), "switch_level", [index + 1])
-
 	yield(get_tree(), "node_added")
 	var safe_area_position_y = OS.get_window_safe_area().position.y
 	if safe_area_position_y != 0:
@@ -29,6 +27,8 @@ func _set_level_buttons_state():
 		var state = levels.values()[index][0] as bool
 		level_button_l.level_is_unlocked = state
 		level_button_l.disabled = !state
+		if index + 1 == int(Data.current_level):
+			level_button_l.grab_focus()
 
 
 func _set(property, value):
