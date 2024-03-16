@@ -91,6 +91,7 @@ onready var m:Vector2 = get_global_mouse_position()
 
 func _physics_process(delta):
 	var velocity = Input.get_vector("l", "r", "u", "d")
+	print("velocity: ", velocity)
 	var movement = 900.0 * velocity * delta
 	if (movement):
 		var final_pos = Vector2(m.x, m.y) + movement

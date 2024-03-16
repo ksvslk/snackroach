@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/debug_notch.gd" type="Script" id=1]
 [ext_resource path="res://scripts/music_button.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://styles/RestartTextStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scripts/options_list.gd" type="Script" id=5]
 [ext_resource path="res://styles/SubmenuButton.tres" type="StyleBox" id=6]
-[ext_resource path="res://styles/MenuButton.tres" type="StyleBox" id=7]
 [ext_resource path="res://scenes/AddTapsForRewarded.tscn" type="PackedScene" id=8]
 [ext_resource path="res://graphics/tv_host.png" type="Texture" id=9]
 [ext_resource path="res://scripts/hat_switch.gd" type="Script" id=10]
@@ -14,8 +13,6 @@
 [ext_resource path="res://styles/FocusedSubmenuButton.tres" type="StyleBox" id=12]
 [ext_resource path="res://scripts/master.gd" type="Script" id=13]
 [ext_resource path="res://graphics/focused_back.svg" type="Texture" id=14]
-[ext_resource path="res://styles/FocusedMenuButton.tres" type="StyleBox" id=15]
-[ext_resource path="res://graphics/gear.svg" type="Texture" id=16]
 [ext_resource path="res://scripts/fps_counter.gd" type="Script" id=17]
 [ext_resource path="res://fonts/LongerTextButton.tres" type="DynamicFont" id=18]
 [ext_resource path="res://graphics/back.svg" type="Texture" id=19]
@@ -31,7 +28,6 @@
 [ext_resource path="res://scripts/sound_button.gd" type="Script" id=38]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
 [ext_resource path="res://scenes/HitArea.tscn" type="PackedScene" id=42]
-[ext_resource path="res://styles/TapsButton.tres" type="StyleBox" id=43]
 [ext_resource path="res://graphics/GUI 1.png" type="Texture" id=45]
 
 [sub_resource type="StyleBoxFlat" id=26]
@@ -65,11 +61,6 @@ void fragment() {
 shader = SubResource( 54 )
 shader_param/base = Color( 0.101961, 0.101961, 0.0980392, 1 )
 
-[sub_resource type="DynamicFont" id=40]
-size = 40
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-
 [sub_resource type="AtlasTexture" id=57]
 flags = 4
 atlas = ExtResource( 45 )
@@ -89,70 +80,73 @@ script = ExtResource( 13 )
 pause_mode = 2
 layer = 2
 
-[node name="TapsInfoBar" type="Control" parent="GamePlayMenu"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 182.0
-margin_bottom = 335.0
-mouse_filter = 2
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="HBoxContainer" type="VBoxContainer" parent="GamePlayMenu/TapsInfoBar"]
-margin_right = 177.0
-margin_bottom = 335.0
+[node name="TapsInfoBar" type="HBoxContainer" parent="GamePlayMenu"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -109.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="LevelNr" type="Label" parent="GamePlayMenu/TapsInfoBar/HBoxContainer"]
-margin_right = 177.0
+[node name="LevelNr" type="Label" parent="GamePlayMenu/TapsInfoBar"]
+margin_right = 477.0
+margin_bottom = 109.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 20 )
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TotalTaps" type="Label" parent="GamePlayMenu/TapsInfoBar"]
+margin_left = 481.0
+margin_right = 958.0
+margin_bottom = 109.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 20 )
+text = "22 / 33"
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ParTaps" type="Label" parent="GamePlayMenu/TapsInfoBar"]
+margin_left = 962.0
+margin_right = 1439.0
+margin_bottom = 109.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 20 )
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Options" type="Label" parent="GamePlayMenu/TapsInfoBar"]
+margin_left = 1443.0
+margin_right = 1920.0
 margin_bottom = 109.0
 focus_mode = 2
 mouse_filter = 1
 size_flags_horizontal = 3
-size_flags_vertical = 2
-size_flags_stretch_ratio = 0.7
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 20 )
-custom_styles/normal = ExtResource( 43 )
+text = "Options"
 align = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="TotalTaps" type="Label" parent="GamePlayMenu/TapsInfoBar/HBoxContainer"]
-margin_top = 113.0
-margin_right = 177.0
-margin_bottom = 222.0
-focus_mode = 2
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 2
-size_flags_stretch_ratio = 2.0
-custom_fonts/font = ExtResource( 20 )
-custom_styles/normal = ExtResource( 43 )
-text = "22 / 33"
-align = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="ParTaps" type="Label" parent="GamePlayMenu/TapsInfoBar/HBoxContainer"]
-margin_top = 226.0
-margin_right = 177.0
-margin_bottom = 335.0
-focus_mode = 2
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 2
-size_flags_stretch_ratio = 0.7
-custom_fonts/font = ExtResource( 20 )
-custom_styles/normal = ExtResource( 43 )
-align = 1
+valign = 1
 __meta__ = {
 "_editor_description_": ""
 }
@@ -446,44 +440,6 @@ material = SubResource( 55 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="BackButton" type="Control" parent="SettingsMenu/OptionsContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Graphics" type="Button" parent="SettingsMenu/OptionsContainer/BackButton"]
-visible = false
-modulate = Color( 1, 0.956863, 0.494118, 1 )
-show_behind_parent = true
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -476.0
-margin_top = -153.0
-margin_right = 476.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-custom_constants/hseparation = 20
-custom_fonts/font = SubResource( 40 )
-custom_styles/hover = ExtResource( 6 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
-custom_styles/normal = ExtResource( 6 )
-text = "BACK"
-icon = ExtResource( 19 )
-align = 0
-expand_icon = true
-__meta__ = {
-"_editor_description_": ""
-}
-
 [node name="LevelScroller" type="GridContainer" parent="SettingsMenu/OptionsContainer"]
 visible = false
 anchor_right = 1.0
@@ -494,31 +450,6 @@ custom_constants/vseparation = 8
 custom_constants/hseparation = 1
 columns = 10
 script = ExtResource( 34 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Options" type="Button" parent="SettingsMenu/OptionsContainer"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -150.0
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.7
-custom_constants/hseparation = 20
-custom_fonts/font = ExtResource( 20 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 15 )
-custom_styles/disabled = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
-icon = ExtResource( 16 )
-icon_align = 1
-expand_icon = true
 __meta__ = {
 "_editor_description_": ""
 }
@@ -703,10 +634,10 @@ stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
 
+[connection signal="gui_input" from="GamePlayMenu/TapsInfoBar/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevelForRewarded" to="." method="_on_SkipLevelForRewarded_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" to="." method="_on_SkipLevel_gui_input"]
-[connection signal="gui_input" from="SettingsMenu/OptionsContainer/BackButton" to="SettingsMenu/OptionsContainer" method="_on_BackButton_gui_input"]
-[connection signal="gui_input" from="SettingsMenu/OptionsContainer/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_gui_input"]
+[connection signal="gui_input" from="SettingsMenu/OptionsContainer/MenuActiveOverlay" to="SettingsMenu/OptionsContainer" method="_on_MenuActiveOverlay_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Previous" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Previous_pressed"]
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/SelectedHat" to="SettingsMenu/OptionsContainer" method="_on_SelectedHat_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Next" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Next_pressed"]

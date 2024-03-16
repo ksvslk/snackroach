@@ -20,9 +20,9 @@ onready var compliment = $GamePlayMenu/OverlayButton/TV/Info/Compliment
 onready var overlay_taps_exceeded = $GamePlayMenu/OverlayTapsExceeded
 onready var hat_switch = $SettingsMenu/OptionsContainer/OptionsList/HatSwitch
 
-onready var level_label = $GamePlayMenu/TapsInfoBar/HBoxContainer/LevelNr
-onready var par_taps = $GamePlayMenu/TapsInfoBar/HBoxContainer/ParTaps
-onready var total_taps = $GamePlayMenu/TapsInfoBar/HBoxContainer/TotalTaps
+onready var level_label = $GamePlayMenu/TapsInfoBar/LevelNr
+onready var par_taps = $GamePlayMenu/TapsInfoBar/ParTaps
+onready var total_taps = $GamePlayMenu/TapsInfoBar/TotalTaps
 var current_total_taps = -1
 var total_taps_tapped = 0
 
@@ -108,7 +108,7 @@ func _load_level(level_nr: int, rewards_count:int):
 	var current_level = (level as Level)
 	total_taps_tapped = 0
 	current_level.init_snacks()
-	level_label.text = "L"+str(level_nr)
+	level_label.text = str(level_nr)
 	par_taps.text = tr("par") + ": " + str(current_level.par)
 	if Data.get_unlimited_taps_state():
 		current_total_taps = "INF"
