@@ -82,7 +82,7 @@ tile_data = PoolIntArray( 589838, 48, 0, 589839, 58, 0, 589840, 58, 0, 589841, 5
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 788.4, 5297.59 )
-rotation = -1.5708
+rotation = 0.0
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Conveyer" parent="." instance=ExtResource( 11 )]

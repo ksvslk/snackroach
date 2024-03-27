@@ -137,7 +137,6 @@ navpoly = SubResource( 3 )
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 456.591, 2824.63 )
-rotation = -1.5708
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Roof" type="TileMap" parent="." groups=["tappable"]]

@@ -31,6 +31,7 @@ func _ready():
 
 func init_snacks() -> void:
 	snacks.init_snacks(par)
+	get_viewport().warp_mouse(roach.global_position)
 
 
 func _init_roofs_connections():
@@ -86,14 +87,17 @@ func _roach_made_it_to_the_food_gate():
 	emit_signal("finished")
 
 
-onready var m:Vector2 = get_global_mouse_position()
-
+onready var m:Vector2 = roach.global_position
 
 func _physics_process(delta):
 	var velocity = Input.get_vector("l", "r", "u", "d")
-	print("velocity: ", velocity)
-	var movement = 900.0 * velocity * delta
-	if (movement):
+	var movement = 1500.0 * velocity * delta
+	if movement and get_parent().game_state == 0:
+		print("Left strength:", Input.get_action_strength("l"))
+		print("Right strength:", Input.get_action_strength("r"))
+		print("Up strength:", Input.get_action_strength("u"))
+		print("Down strength:", Input.get_action_strength("d"))
+		print("velocity: ", velocity)
 		var final_pos = Vector2(m.x, m.y) + movement
 		get_viewport().warp_mouse(final_pos)
 		m = final_pos

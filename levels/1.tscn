@@ -69,7 +69,7 @@ tile_data = PoolIntArray( 2097163, 48, 0, 2097164, 58, 0, 2097165, 58, 0, 209716
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1514.41, 5036.68 )
-rotation = 0.0
+rotation = -1.57079
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Roof" type="TileMap" parent="." groups=["tappable"]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/SpikesSquare.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=10]
+[ext_resource path="res://graphics/black_area.png" type="Texture" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -147,6 +148,7 @@ material = SubResource( 9 )
 [node name="Light" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1547.02, 3328.01 )
 scale = Vector2( 12.8328, 21.1422 )
+texture = ExtResource( 11 )
 
 [node name="SpikesSquare" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1009.61, 3851.46 )

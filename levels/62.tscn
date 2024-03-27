@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=11]
 [ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=12]
+[ext_resource path="res://graphics/black_area.png" type="Texture" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -138,6 +139,7 @@ material = SubResource( 7 )
 [node name="Light" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1547.02, 3329.43 )
 scale = Vector2( 12.8044, 21.128 )
+texture = ExtResource( 13 )
 turn_lights_on_when_dead_for_second = true
 
 [node name="SpikesSquare6" parent="." instance=ExtResource( 9 )]

@@ -205,7 +205,7 @@ shape = SubResource( 19 )
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1497.39, 5082.06 )
-rotation = -1.5708
+rotation = -3.14159
 scale = Vector2( 1.2, 1.20605 )
 
 [node name="Roof" type="TileMap" parent="." groups=["tappable"]]

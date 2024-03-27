@@ -20,9 +20,12 @@ onready var compliment = $GamePlayMenu/OverlayButton/TV/Info/Compliment
 onready var overlay_taps_exceeded = $GamePlayMenu/OverlayTapsExceeded
 onready var hat_switch = $SettingsMenu/OptionsContainer/OptionsList/HatSwitch
 
-onready var level_label = $GamePlayMenu/TapsInfoBar/LevelNr
-onready var par_taps = $GamePlayMenu/TapsInfoBar/ParTaps
-onready var total_taps = $GamePlayMenu/TapsInfoBar/TotalTaps
+
+onready var level_label = $GamePlayMenu/InfoBarMargin/InfoBar/LevelNr
+
+onready var par_taps = $GamePlayMenu/TapsBarMargin/TapsInfoBar/ParTaps
+onready var total_taps = $GamePlayMenu/TapsBarMargin/TapsInfoBar/TotalTaps
+
 var current_total_taps = -1
 var total_taps_tapped = 0
 

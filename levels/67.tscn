@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Honey.tscn" type="PackedScene" id=19]
+[ext_resource path="res://graphics/black_area.png" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 187.119
@@ -546,6 +547,7 @@ light_stay_on = true
 [node name="BottomLight" parent="." instance=ExtResource( 17 )]
 position = Vector2( 754.368, 4578.67 )
 scale = Vector2( 5.78538, 9.25944 )
+texture = ExtResource( 20 )
 turn_lights_on_when_dead_for_second = true
 
 [node name="Obstacle" parent="." instance=ExtResource( 18 )]

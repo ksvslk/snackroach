@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Beam.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tilesets/LevelTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=9]
+[ext_resource path="res://graphics/black_area.png" type="Texture" id=10]
 [ext_resource path="res://shader/BeamNew.gdshader" type="Shader" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=3]
@@ -60,10 +61,6 @@ shader = ExtResource( 11 )
 shader_param/strength = 0.319
 shader_param/speed = 3.435
 shader_param/angle = 0.0
-
-[sub_resource type="StreamTexture" id=58]
-flags = 4
-load_path = "res://.import/white_square.png-c5d73fe77ac4342613949838264e3bc9.stex"
 
 [node name="Level" type="Node2D"]
 material = SubResource( 3 )
@@ -268,6 +265,7 @@ collision_mask = 0
 [node name="Light" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1549.86, 4626.88 )
 scale = Vector2( 12.9178, 8.21015 )
+texture = ExtResource( 10 )
 turn_lights_on_when_dead_for_second = true
 timer_wait_time = 0.3
 
@@ -275,7 +273,7 @@ timer_wait_time = 0.3
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, -269.924 )
 scale = Vector2( 1, 1.45446 )
-texture = SubResource( 58 )
+texture = ExtResource( 10 )
 
 [connection signal="body_shape_entered" from="Snack" to="." method="_on_Snack_body_shape_entered"]
 [connection signal="dead" from="Roach" to="." method="_on_Roach_dead"]

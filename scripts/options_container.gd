@@ -4,7 +4,7 @@ onready var options_list = $OptionsList
 onready var menu_active_overlay = $MenuActiveOverlay
 onready var scroll_container = $LevelScroller
 onready var previous = $OptionsList/HatSwitch/Previous
-onready var options = $"../../GamePlayMenu/TapsInfoBar/Options"
+onready var options = $"../../GamePlayMenu/InfoBarMargin/InfoBar/Options"
 
 onready var meister = get_parent().get_parent() as Master
 var currently_visible_suboption = null
