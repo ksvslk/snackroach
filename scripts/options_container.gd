@@ -77,7 +77,7 @@ func _open_options():
 	options_list.visible = true
 	currently_visible_suboption = options_list
 	_hide_all_menu_buttons()
-	$OptionsList/Levels.grab_focus()
+	$OptionsList/Back.grab_focus()
 
 
 func _on_Options_gui_input(event):
@@ -86,6 +86,12 @@ func _on_Options_gui_input(event):
 
 
 func _on_MenuActiveOverlay_gui_input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().set_input_as_handled()
+		_back_to_game()
+
+
+func _on_Back_gui_input(event):
 	if event.is_action_pressed("ui_accept"):
 		get_tree().set_input_as_handled()
 		_back_to_game()

@@ -461,6 +461,7 @@ margin_right = 553.5
 margin_bottom = 459.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 16
 
 [node name="HatSwitch" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
 margin_right = 1107.0
@@ -483,6 +484,7 @@ texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
 texture_focused = ExtResource( 14 )
+stretch_mode = 5
 
 [node name="SelectedHat" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
 margin_left = 370.0
@@ -490,7 +492,7 @@ margin_right = 736.0
 margin_bottom = 138.0
 mouse_filter = 0
 size_flags_horizontal = 3
-size_flags_vertical = 5
+size_flags_vertical = 3
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
@@ -505,15 +507,34 @@ texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
 texture_focused = ExtResource( 14 )
+stretch_mode = 5
 flip_h = true
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Levels" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 142.0
+[node name="Back" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 154.0
 margin_right = 1107.0
-margin_bottom = 265.0
+margin_bottom = 277.0
+mouse_filter = 1
+custom_constants/hseparation = 20
+custom_fonts/font = ExtResource( 18 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
+custom_styles/normal = ExtResource( 6 )
+text = "back"
+icon_align = 2
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Levels" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 293.0
+margin_right = 1107.0
+margin_bottom = 416.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -531,9 +552,9 @@ __meta__ = {
 }
 
 [node name="MusicSliderContainer" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 269.0
+margin_top = 432.0
 margin_right = 1107.0
-margin_bottom = 344.0
+margin_bottom = 507.0
 custom_constants/separation = 32
 alignment = 1
 
@@ -572,9 +593,9 @@ size_flags_vertical = 4
 texture = ExtResource( 24 )
 
 [node name="SoundSliderContainer" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 348.0
+margin_top = 523.0
 margin_right = 1107.0
-margin_bottom = 423.0
+margin_bottom = 598.0
 custom_constants/separation = 32
 alignment = 1
 
@@ -614,9 +635,9 @@ size_flags_vertical = 4
 texture = ExtResource( 24 )
 
 [node name="FullScreen" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 427.0
+margin_top = 614.0
 margin_right = 1107.0
-margin_bottom = 550.0
+margin_bottom = 737.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -636,9 +657,9 @@ __meta__ = {
 }
 
 [node name="Quit" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 554.0
+margin_top = 753.0
 margin_right = 1107.0
-margin_bottom = 677.0
+margin_bottom = 876.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -672,6 +693,7 @@ bus = "SFX"
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/MenuActiveOverlay" to="SettingsMenu/OptionsContainer" method="_on_MenuActiveOverlay_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Previous" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Previous_pressed"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Next" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Next_pressed"]
+[connection signal="gui_input" from="SettingsMenu/OptionsContainer/OptionsList/Back" to="SettingsMenu/OptionsContainer" method="_on_Back_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/Levels" to="SettingsMenu/OptionsContainer" method="_on_Levels_pressed"]
 [connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" method="_on_HSlider_value_changed"]
