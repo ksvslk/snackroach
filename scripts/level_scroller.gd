@@ -11,7 +11,7 @@ func _ready():
 		button.button_text = str(index + 1)
 		button.disabled = !state
 		add_child(button)
-		button.connect("pressed", get_parent(), "switch_level", [index + 1])
+		button.connect("pressed", get_parent().get_parent(), "switch_level", [index + 1])
 	yield(get_tree(), "node_added")
 	var safe_area_position_y = OS.get_window_safe_area().position.y
 	if safe_area_position_y != 0:
@@ -22,12 +22,12 @@ func _ready():
 func _set_level_buttons_state():
 	var levels = Data.get_levels()
 	var added_buttons = get_children()
-	for index in range(0, added_buttons.size()):
+	for index in range(1, added_buttons.size()):
 		var level_button_l = get_child(index)
-		var state = levels.values()[index][0] as bool
+		var state = levels.values()[index - 1][0] as bool
 		level_button_l.level_is_unlocked = state
 		level_button_l.disabled = !state
-		if index + 1 == int(Data.current_level):
+		if index  == int(Data.current_level):
 			level_button_l.grab_focus()
 
 

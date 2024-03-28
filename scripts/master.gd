@@ -409,3 +409,5 @@ func _on_DebugContinue_pressed():
 
 var langs = TranslationServer.get_loaded_locales()
 var temp_langs = TranslationServer.get_loaded_locales()
+
+

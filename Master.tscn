@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://FullScreen.gd" type="Script" id=1]
 [ext_resource path="res://styles/BarStyleNormal.tres" type="StyleBox" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://styles/RestartTextStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://styles/BarStyleHighlight.tres" type="StyleBox" id=5]
 [ext_resource path="res://styles/SubmenuButton.tres" type="StyleBox" id=6]
-[ext_resource path="res://graphics/gear.png" type="Texture" id=7]
+[ext_resource path="res://HintIconBackground.tres" type="StyleBox" id=7]
 [ext_resource path="res://icon/quit.png" type="Texture" id=8]
 [ext_resource path="res://graphics/tv_host.png" type="Texture" id=9]
 [ext_resource path="res://scripts/hat_switch.gd" type="Script" id=10]
@@ -28,6 +28,9 @@
 [ext_resource path="res://graphics/sound_knob.png" type="Texture" id=26]
 [ext_resource path="res://sounds/select.wav" type="AudioStream" id=27]
 [ext_resource path="res://styles/GameOverMessage.tres" type="StyleBox" id=28]
+[ext_resource path="res://addons/controller_icons/assets/key/esc.png" type="Texture" id=29]
+[ext_resource path="res://addons/controller_icons/assets/key/enter_alt.png" type="Texture" id=30]
+[ext_resource path="res://addons/controller_icons/objects/Button.gd" type="Script" id=31]
 [ext_resource path="res://scripts/level_scroller.gd" type="Script" id=34]
 [ext_resource path="res://scripts/options_container.gd" type="Script" id=36]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
@@ -60,6 +63,13 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=55]
 shader = SubResource( 54 )
 shader_param/base = Color( 0.101961, 0.101961, 0.0980392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.207843, 0.611765, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="GDScript" id=56]
 script/source = "extends HSlider
@@ -135,13 +145,18 @@ size_flags_vertical = 11
 alignment = 1
 
 [node name="Options" type="Button" parent="GamePlayMenu/InfoBarMargin/InfoBar"]
-margin_right = 62.0
 margin_bottom = 63.0
-icon = ExtResource( 7 )
-flat = true
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+align = 0
+script = ExtResource( 31 )
+path = "open_options"
 
 [node name="LevelNr" type="Label" parent="GamePlayMenu/InfoBarMargin/InfoBar"]
-margin_left = 66.0
+margin_left = 4.0
 margin_right = 1888.0
 margin_bottom = 63.0
 focus_mode = 2
@@ -292,9 +307,12 @@ custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 25 )
 action_mode = 0
 text = "click_to_continue"
+icon_align = 2
+script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
+path = "ui_skip"
 
 [node name="HitArea" parent="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" instance=ExtResource( 42 )]
 
@@ -302,6 +320,7 @@ __meta__ = {
 margin_top = 388.0
 margin_right = 1080.0
 margin_bottom = 457.0
+mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 18 )
 custom_styles/hover = ExtResource( 4 )
@@ -311,9 +330,14 @@ custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
+icon = ExtResource( 30 )
+clip_text = true
+icon_align = 2
+script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
+path = "ui_accept"
 
 [node name="HitArea" parent="GamePlayMenu/OverlayButton/RestartOrSkip/RestartButton" instance=ExtResource( 42 )]
 
@@ -332,6 +356,9 @@ custom_styles/focus = SubResource( 25 )
 custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 25 )
 text = "click_to_continue"
+icon_align = 2
+script = ExtResource( 31 )
+path = "ui_accept"
 
 [node name="OverlayTapsExceeded" type="CenterContainer" parent="GamePlayMenu"]
 pause_mode = 2
@@ -384,9 +411,12 @@ custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
 clip_text = true
+icon_align = 2
+script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
+path = "ui_accept"
 
 [node name="HitArea" parent="GamePlayMenu/OverlayTapsExceeded/VBoxContainer/RestartButton" instance=ExtResource( 42 )]
 
@@ -435,12 +465,25 @@ material = SubResource( 55 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="LevelScroller" type="GridContainer" parent="SettingsMenu/OptionsContainer"]
+[node name="LevelScrollerContainer" type="VBoxContainer" parent="SettingsMenu/OptionsContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LevelScroller" type="GridContainer" parent="SettingsMenu/OptionsContainer/LevelScrollerContainer"]
+visible = false
+margin_top = 510.0
+margin_right = 1856.0
+margin_bottom = 1016.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/vseparation = 8
 custom_constants/hseparation = 1
 columns = 10
@@ -448,6 +491,25 @@ script = ExtResource( 34 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="BackToMenu" type="Button" parent="SettingsMenu/OptionsContainer/LevelScrollerContainer/LevelScroller"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 61.0
+margin_bottom = 571.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 18 )
+custom_styles/focus = SubResource( 4 )
+flat = true
+icon_align = 1
+script = ExtResource( 31 )
+__meta__ = {
+"_editor_description_": ""
+}
+path = "ui_cancel"
 
 [node name="OptionsList" type="VBoxContainer" parent="SettingsMenu/OptionsContainer"]
 visible = false
@@ -525,11 +587,15 @@ custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "back"
+icon = ExtResource( 29 )
+align = 0
 icon_align = 2
 expand_icon = true
+script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
+path = "ui_cancel"
 
 [node name="Levels" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
 margin_top = 293.0
@@ -691,6 +757,7 @@ bus = "SFX"
 [connection signal="gui_input" from="GamePlayMenu/InfoBarMargin/InfoBar/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" to="." method="_on_SkipLevel_gui_input"]
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/MenuActiveOverlay" to="SettingsMenu/OptionsContainer" method="_on_MenuActiveOverlay_gui_input"]
+[connection signal="gui_input" from="SettingsMenu/OptionsContainer/LevelScrollerContainer/LevelScroller/BackToMenu" to="SettingsMenu/OptionsContainer" method="_on_BackToMenu_gui_input"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Previous" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Previous_pressed"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Next" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Next_pressed"]
 [connection signal="gui_input" from="SettingsMenu/OptionsContainer/OptionsList/Back" to="SettingsMenu/OptionsContainer" method="_on_Back_gui_input"]
