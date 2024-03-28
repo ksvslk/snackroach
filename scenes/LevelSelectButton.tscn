@@ -5,9 +5,11 @@
 [ext_resource path="res://graphics/GUI 1.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0.439216, 0.12549, 1 )
-corner_radius_top_left = 16
-corner_radius_bottom_left = 16
+bg_color = Color( 0.207843, 0.611765, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4

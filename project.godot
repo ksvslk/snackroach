@@ -124,11 +124,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/roof.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ScoreLine",
-"language": "GDScript",
-"path": "res://scripts/score_line.gd"
-}, {
 "base": "TileMap",
 "class": "Snacks",
 "language": "GDScript",
@@ -198,7 +193,6 @@ _global_script_class_icons={
 "RestorableTileMap": "",
 "RockThrower": "",
 "Roof": "res://graphics/icons/roof_node.svg",
-"ScoreLine": "",
 "Snacks": "",
 "Spider": "res://graphics/icons/spider_node.svg",
 "SpikesSquare": "",
@@ -338,7 +332,8 @@ pointing/emulate_touch_from_mouse=true
 
 [locale]
 
-translations=PoolStringArray( "res://translations/translations.de.translation", "res://translations/translations.en.translation", "res://translations/translations.es.translation", "res://translations/translations.et.translation", "res://translations/translations.fi.translation", "res://translations/translations.fr.translation", "res://translations/translations.hi.translation", "res://translations/translations.id.translation", "res://translations/translations.it.translation", "res://translations/translations.ja.translation", "res://translations/translations.ko.translation", "res://translations/translations.pt.translation", "res://translations/translations.th.translation", "res://translations/translations.vi.translation", "res://translations/translations.ar.translation", "res://translations/translations.ms.translation", "res://translations/translations.nb.translation", "res://translations/translations.ru.translation", "res://translations/translations.sv.translation", "res://translations/translations.tr.translation", "res://translations/translations.zh_Hans_CN.translation" )
+test="el"
+translations=PoolStringArray( "res://translations/translations.ar.translation", "res://translations/translations.bg.translation", "res://translations/translations.cs.translation", "res://translations/translations.da.translation", "res://translations/translations.de.translation", "res://translations/translations.el.translation", "res://translations/translations.en.translation", "res://translations/translations.es.translation", "res://translations/translations.fi.translation", "res://translations/translations.fr.translation", "res://translations/translations.hu.translation", "res://translations/translations.id.translation", "res://translations/translations.it.translation", "res://translations/translations.ja.translation", "res://translations/translations.ko.translation", "res://translations/translations.nb.translation", "res://translations/translations.nl.translation", "res://translations/translations.pl.translation", "res://translations/translations.pt.translation", "res://translations/translations.ro.translation", "res://translations/translations.ru.translation", "res://translations/translations.sv.translation", "res://translations/translations.th.translation", "res://translations/translations.tr.translation", "res://translations/translations.uk.translation", "res://translations/translations.vi.translation", "res://translations/translations.zh.translation" )
 
 [physics]
 
@@ -354,11 +349,10 @@ vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
+quality/shading/force_lambert_over_burley=true
 quality/shading/force_blinn_over_ggx=true
-quality/filters/anisotropic_filter_level=2
+quality/filters/anisotropic_filter_level=1
 quality/filters/use_nearest_mipmap_filter=true
-quality/skinning/software_skinning_fallback=false
-quality/spatial_partitioning/render_tree_balance=1.0
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 quality/filters/use_fxaa=true
