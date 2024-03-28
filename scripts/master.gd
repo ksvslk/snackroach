@@ -41,6 +41,7 @@ var game_state = GameState.PLAYING
 
 
 func _ready():
+	Input.start_joy_vibration(0, 1.0, 1.0, 1.0)
 	_enable_playing()
 	if not Data.get_unlimited_taps_state():
 		Data.connect("unlimited_taps", self, "change_ui_for_unlimited_tap")

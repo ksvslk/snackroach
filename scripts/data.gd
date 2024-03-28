@@ -26,17 +26,6 @@ func _ready():
 		_set_initial_launch_settings()
 	elif err != 0:
 		printerr("Could not load local data. ", err)
-	_set_global_sound()
-	_set_haptic_feedback()
-	_add_hats_key()
-	_add_music_key()
-	
-
-func _add_music_key():
-	if _config.has_section_key(C.various_section, C.global_music):
-		return
-	_config.set_value(C.various_section, C.global_music, true)
-	_config.save(_path)
 
 
 func _add_hats_key():
@@ -93,7 +82,6 @@ func increase_taps_reward_count():
 	var rewards = _config.get_value(current_level, C.taps_reward_count)
 	_config.set_value(current_level, C.taps_reward_count, rewards + 1)
 	_config.save(_path)
-	save_game(int(current_level))
 	
 	
 func load_current_level():
@@ -116,8 +104,6 @@ func load_next_level(nr: int = -1, from_level_select: bool = false):
 	_config.save(_path)
 	var rewards = _config.get_value(current_level, C.taps_reward_count)
 	emit_signal("level_loaded", int(current_level), rewards)
-	if from_level_select:
-		save_game(int(current_level))
 
 
 func get_level_complete_info() -> Dictionary:
@@ -135,7 +121,6 @@ func unlock_next_level():
 		_config.set_value(str(level_to_be_unlocked), C.unlocked, 1)
 		_config.save(_path)
 		emit_signal("level_unlocked", level_to_be_unlocked - 1)
-		save_game(level_to_be_unlocked)
 
 
 func _get_total_score() -> int:
@@ -305,43 +290,37 @@ func get_levels() -> Dictionary:
 	return info
 
 # Sound and haptic feedback button/game state
-func change_global_sound(value: bool):
-	_config.set_value(C.various_section, C.global_sound, int(value))
+func set_sound_volume(value:float) -> void:
+	_config.set_value(C.various_section, C.global_sound_volume, value)
 	_config.save(_path)
-	_set_global_sound()
-	
 
-func change_global_music(value: bool):
-	_config.set_value(C.various_section, C.global_music, int(value))
+
+func get_sound_volume() -> float:
+	var value = _config.get_value(C.various_section, C.global_sound_volume)
+	return value
+
+
+func set_music_volume(value:float) -> void:
+	_config.set_value(C.various_section, C.global_music_volume, value)
 	_config.save(_path)
-	_set_global_music(value)
 
 
-func change_haptic_feedback(value: bool):
-	_config.set_value(C.various_section, C.global_haptic_feedback, int(value))
+func get_music_volume() -> float:
+	var value = _config.get_value(C.various_section, C.global_music_volume)
+	return value
+
+
+func set_fullscreen(value:int) -> void:
+	_config.set_value(C.various_section, C.fullscreen, value)
 	_config.save(_path)
-	_set_haptic_feedback()
 
 
-func _set_global_sound():
-	var value = get_global_sound_state()
-	var master_sound = AudioServer.get_bus_index("SFX")
-	AudioServer.set_bus_mute(master_sound, !bool(value))
-
-
-func _set_global_music(value:bool):
-	var music_bus = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_mute(music_bus, !value)
-
+func get_fullscreen() -> int:
+	var value = _config.get_value(C.various_section, C.fullscreen)
+	return value
 
 func _set_haptic_feedback():
 	GPack.haptic_enabled = get_haptic_feedback_state()
-
-func get_global_sound_state() -> bool:
-	return _config.get_value(C.various_section, C.global_sound) as bool
-
-func get_global_music_state() -> bool:
-	return _config.get_value(C.various_section, C.global_music) as bool
 
 func get_haptic_feedback_state() -> bool:
 	return _config.get_value(C.various_section, C.global_haptic_feedback)
@@ -370,7 +349,6 @@ func get_unlock_all_levels_state() -> int:
 func set_unlimited_taps_state(value:int) -> void:
 	_config.set_value(C.various_section, C.unlimited_taps_active, value)
 	_config.save(_path)
-	save_game(int(current_level))
 	
 
 func set_unlock_all_levels_state(value:int) -> void:
@@ -378,7 +356,6 @@ func set_unlock_all_levels_state(value:int) -> void:
 		_config.set_value(String(i), C.unlocked, 1)
 	_config.set_value(C.various_section, C.unlock_all_levels_active, value)
 	_config.save(_path)
-	save_game(int(current_level))
 	
 
 func set_all_in_pack_state(value:int) -> void:
@@ -387,12 +364,13 @@ func set_all_in_pack_state(value:int) -> void:
 	_config.set_value(C.various_section, C.unlimited_taps_active, value)
 	_config.set_value(C.various_section, C.unlock_all_levels_active, value)
 	_config.save(_path)
-	save_game(int(current_level))
 
 
 func _set_initial_launch_settings():
 	_config.set_value(C.various_section, C.current_level_key, "1")
-	_config.set_value(C.various_section, C.global_sound, 1)
+	_config.set_value(C.various_section, C.fullscreen, 1)
+	_config.set_value(C.various_section, C.global_music_volume, 1.0)
+	_config.set_value(C.various_section, C.global_sound_volume, 1.0)
 	_config.set_value(C.various_section, C.global_haptic_feedback, 1)
 	_config.set_value(C.various_section, C.unlimited_taps_active, 0)
 	_config.set_value(C.various_section, C.unlock_all_levels_active, 0)
@@ -414,45 +392,5 @@ func _set_initial_launch_settings():
 			_config.set_value(String(i), C.unlocked, 1)
 		else:
 			_config.set_value(String(i), C.unlocked, 1)
+	_add_hats_key()
 	_config.save(_path)
-
-
-func save_game(next_level:int) -> void:
-	if OS.get_name() == "Android" or OS.get_name() == "iOS":
-		var game_data = Dictionary()
-		for key in C.various_section_dictionary_keys:
-			if key == C.current_level_key:
-				game_data[key] = str(next_level)
-			else:
-				game_data[key] = _config.get_value(C.various_section, key)
-		for level_nr in range(1, _total_levels_plus_one):
-			var level = str(level_nr)
-			var level_info = []
-			for level_info_key in _config.get_section_keys(level):
-				level_info.push_back(_config.get_value(level, level_info_key))
-			game_data[level] = str(level_info)
-		GPack.save_game(game_data, next_level)
-		
-		
-func load_game(game_data: Dictionary) -> void:
-	if not game_data.empty():
-		for key in C.various_section_dictionary_keys:
-			if key == C.unlimited_taps_active:
-				if game_data[key] == 1 and _config.get_value(C.various_section, C.unlimited_taps_active) == 0:
-					_config.set_value(C.various_section, key, game_data[key])
-			elif key == C.unlock_all_levels_active:
-				if game_data[key] == 1 and _config.get_value(C.various_section, C.unlock_all_levels_active) == 0:
-					_config.set_value(C.various_section, key, game_data[key])
-			else:
-				_config.set_value(C.various_section, key, game_data[key])
-		for level_nr in range(1, _total_levels_plus_one):
-			var level = str(level_nr)
-			var level_info = JSON.parse(game_data[level])
-			if typeof(level_info.result) == TYPE_ARRAY:
-					for index in range(0, level_info.result.size()):
-						_config.set_value(level, C.level_section_dictionary_keys[index], level_info.result[index])
-			else:
-				push_error("Unexpected results when loading level info data.")
-		_config.save(_path)
-		_set_global_sound()
-		_set_haptic_feedback()

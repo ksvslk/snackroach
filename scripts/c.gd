@@ -129,10 +129,12 @@ const various_section: String = "various"
 # Initial value is 1, UPDATE on level change
 const current_level_key: String = "progress"
 
-const global_sound: String = "global_sound"
-const global_music: String = "global_music"
+const global_sound_volume: String = "global_sound_volume"
+const global_music_volume: String = "global_music_volume"
+
 const global_haptic_feedback: String = "global_haptic_feedback"
 const global_hat: String = "global_hat"
+const fullscreen: String = "fullscreen"
 
 const unlock_all_levels_active: String = "unlock_all_levels_active"
 const unlimited_taps_active: String = "unlimited_taps_active"
@@ -183,7 +185,8 @@ const unlocked: String = "unlocked"
 
 const various_section_dictionary_keys = [
 	current_level_key,
-	global_sound,
+	global_sound_volume,
+	global_music_volume,
 	global_haptic_feedback,
 	unlimited_taps_active,
 	unlock_all_levels_active

@@ -168,26 +168,6 @@ func show_rewarded_ad(ad_category: String) -> void:
 		android_plugin.showRewardedAd()
 
 
-################
-#  SAVE GAME   #
-################
-
-func save_game(data: Dictionary, progress: int) -> void:
-	if android_plugin && !C.is_amazon:
-		android_plugin.saveGame(data, progress)
-	elif icloud:
-		data["progress"] = progress
-		var _result = icloud.set_key_values(data)
-
-
-func load_game() -> void:
-	if android_plugin && !C.is_amazon:
-		android_plugin.loadGame()
-	elif icloud:
-		var game_data = icloud.get_all_key_values()
-		if not game_data.empty():
-			Data.load_game(game_data)
-
 # void start_joy_vibration(device: int, weak_magnitude: float, strong_magnitude: float, duration: float = 0)
 # Joypads usually come with two rumble motors, a strong and a weak one.
 # weak_magnitude is the strength of the weak motor (between 0 and 1)

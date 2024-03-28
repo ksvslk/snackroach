@@ -1,32 +1,37 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://scripts/music_button.gd" type="Script" id=2]
+[ext_resource path="res://FullScreen.gd" type="Script" id=1]
+[ext_resource path="res://styles/BarStyleNormal.tres" type="StyleBox" id=2]
 [ext_resource path="res://sounds/cr.ogg" type="AudioStream" id=3]
 [ext_resource path="res://styles/RestartTextStyle.tres" type="StyleBox" id=4]
-[ext_resource path="res://scripts/options_list.gd" type="Script" id=5]
+[ext_resource path="res://styles/BarStyleHighlight.tres" type="StyleBox" id=5]
 [ext_resource path="res://styles/SubmenuButton.tres" type="StyleBox" id=6]
 [ext_resource path="res://graphics/gear.png" type="Texture" id=7]
+[ext_resource path="res://icon/quit.png" type="Texture" id=8]
 [ext_resource path="res://graphics/tv_host.png" type="Texture" id=9]
 [ext_resource path="res://scripts/hat_switch.gd" type="Script" id=10]
 [ext_resource path="res://scenes/LevelSwitcher.tscn" type="PackedScene" id=11]
 [ext_resource path="res://styles/FocusedSubmenuButton.tres" type="StyleBox" id=12]
 [ext_resource path="res://scripts/master.gd" type="Script" id=13]
 [ext_resource path="res://graphics/focused_back.svg" type="Texture" id=14]
+[ext_resource path="res://icon/fullscreen.png" type="Texture" id=15]
+[ext_resource path="res://icon/levelselect.png" type="Texture" id=16]
 [ext_resource path="res://scripts/fps_counter.gd" type="Script" id=17]
 [ext_resource path="res://fonts/LongerTextButton.tres" type="DynamicFont" id=18]
 [ext_resource path="res://graphics/back.svg" type="Texture" id=19]
+[ext_resource path="res://icon/volume_down.png" type="Texture" id=20]
 [ext_resource path="res://graphics/hats/christmas.png" type="Texture" id=21]
 [ext_resource path="res://graphics/tv.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Result.tscn" type="PackedScene" id=23]
-[ext_resource path="res://graphics/empty100.png" type="Texture" id=27]
+[ext_resource path="res://icon/volume_up.png" type="Texture" id=24]
+[ext_resource path="res://graphics/music_knob.png" type="Texture" id=25]
+[ext_resource path="res://graphics/sound_knob.png" type="Texture" id=26]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=27]
 [ext_resource path="res://styles/GameOverMessage.tres" type="StyleBox" id=28]
-[ext_resource path="res://scripts/haptic_button.gd" type="Script" id=33]
 [ext_resource path="res://scripts/level_scroller.gd" type="Script" id=34]
 [ext_resource path="res://scripts/options_container.gd" type="Script" id=36]
-[ext_resource path="res://scripts/sound_button.gd" type="Script" id=38]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
 [ext_resource path="res://scenes/HitArea.tscn" type="PackedScene" id=42]
-[ext_resource path="res://graphics/GUI 1.png" type="Texture" id=45]
 
 [sub_resource type="StyleBoxFlat" id=25]
 content_margin_left = 40.0
@@ -56,15 +61,52 @@ void fragment() {
 shader = SubResource( 54 )
 shader_param/base = Color( 0.101961, 0.101961, 0.0980392, 1 )
 
-[sub_resource type="AtlasTexture" id=57]
-flags = 4
-atlas = ExtResource( 45 )
-region = Rect2( 757, 178, 66, 69 )
+[sub_resource type="GDScript" id=56]
+script/source = "extends HSlider
 
-[sub_resource type="AtlasTexture" id=56]
-flags = 4
-atlas = ExtResource( 45 )
-region = Rect2( 842, 178, 66, 69 )
+export var audio_bus_name := \"Music\"
+onready var volume_down = $\"../VolumeDown\"
+onready var volume_up = $\"../VolumeUp\"
+onready var select = $\"../../../../../SelectEffect\"
+
+onready var _bus := AudioServer.get_bus_index(audio_bus_name)
+
+func _ready() -> void:
+	value = _get_current_volume()
+	AudioServer.set_bus_volume_db(_bus, linear2db(value))
+	if value == 0:
+		volume_down.texture = load(\"res://icon/sound_off.png\")
+	else:
+		volume_down.texture = load(\"res://icon/volume_down.png\")
+		
+
+func _on_HSlider_value_changed(value: float):
+	if value == 0:
+		volume_down.texture = load(\"res://icon/sound_off.png\")
+	else:
+		volume_down.texture = load(\"res://icon/volume_down.png\")
+	AudioServer.set_bus_volume_db(_bus, linear2db(value))
+	_set_new_volume(value)
+	select.play()
+
+
+func _set_new_volume(new_volume:float) -> void:
+	if audio_bus_name == \"Music\":
+		Data.set_music_volume(new_volume)
+	elif audio_bus_name == \"SFX\":
+		Data.set_sound_volume(new_volume)
+		
+
+func _get_current_volume() -> float:
+	if audio_bus_name == \"Music\":
+		return Data.get_music_volume()
+	else:
+		return Data.get_sound_volume()
+
+
+func _on_HSlider_mouse_exited():
+	release_focus()
+"
 
 [node name="Master" type="Node"]
 script = ExtResource( 13 )
@@ -225,9 +267,9 @@ autowrap = true
 
 [node name="RestartOrSkip" type="VBoxContainer" parent="GamePlayMenu/OverlayButton"]
 margin_left = 420.0
-margin_top = 408.0
+margin_top = 414.0
 margin_right = 1500.0
-margin_bottom = 671.0
+margin_bottom = 665.0
 rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -277,9 +319,9 @@ __meta__ = {
 
 [node name="ContinueButton" type="Button" parent="GamePlayMenu/OverlayButton"]
 margin_left = 420.0
-margin_top = 505.0
+margin_top = 508.0
 margin_right = 1500.0
-margin_bottom = 574.0
+margin_bottom = 571.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -300,9 +342,9 @@ size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GamePlayMenu/OverlayTapsExceeded"]
 margin_left = 420.0
-margin_top = 408.0
+margin_top = 414.0
 margin_right = 1500.0
-margin_bottom = 671.0
+margin_bottom = 665.0
 rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -375,8 +417,14 @@ layer = 2
 
 [node name="OptionsContainer" type="Control" parent="SettingsMenu"]
 process_priority = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 mouse_filter = 2
 script = ExtResource( 36 )
 
@@ -407,16 +455,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -476.0
-margin_top = -479.0
-margin_right = 476.0
-margin_bottom = 479.0
+margin_left = -553.5
+margin_top = -459.0
+margin_right = 553.5
+margin_bottom = 459.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 5 )
 
 [node name="HatSwitch" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_right = 952.0
+margin_right = 1107.0
 margin_bottom = 138.0
 rect_clip_content = true
 mouse_filter = 0
@@ -428,7 +475,7 @@ __meta__ = {
 }
 
 [node name="Previous" type="TextureButton" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
-margin_right = 314.0
+margin_right = 366.0
 margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -438,8 +485,8 @@ texture_hover = ExtResource( 19 )
 texture_focused = ExtResource( 14 )
 
 [node name="SelectedHat" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
-margin_left = 318.0
-margin_right = 633.0
+margin_left = 370.0
+margin_right = 736.0
 margin_bottom = 138.0
 mouse_filter = 0
 size_flags_horizontal = 3
@@ -449,8 +496,8 @@ expand = true
 stretch_mode = 6
 
 [node name="Next" type="TextureButton" parent="SettingsMenu/OptionsContainer/OptionsList/HatSwitch"]
-margin_left = 814.0
-margin_right = 952.0
+margin_left = 969.0
+margin_right = 1107.0
 margin_bottom = 138.0
 size_flags_horizontal = 10
 size_flags_vertical = 4
@@ -465,8 +512,8 @@ __meta__ = {
 
 [node name="Levels" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
 margin_top = 142.0
-margin_right = 952.0
-margin_bottom = 302.0
+margin_right = 1107.0
+margin_bottom = 265.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -475,89 +522,123 @@ custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "levels"
-icon = ExtResource( 27 )
+icon = ExtResource( 16 )
 align = 0
 icon_align = 2
+expand_icon = true
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="MusicButton" type="CheckButton" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 306.0
-margin_right = 952.0
-margin_bottom = 466.0
-custom_constants/hseparation = 0
-custom_fonts/font = ExtResource( 18 )
-custom_icons/off = SubResource( 57 )
-custom_icons/on_disabled = SubResource( 56 )
-custom_icons/on = SubResource( 56 )
-custom_icons/off_disabled = SubResource( 57 )
-custom_styles/hover = ExtResource( 6 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 12 )
-custom_styles/hover_pressed = ExtResource( 6 )
-custom_styles/normal = ExtResource( 6 )
-pressed = true
-text = "music"
-icon = ExtResource( 27 )
-icon_align = 2
-script = ExtResource( 2 )
+[node name="MusicSliderContainer" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 269.0
+margin_right = 1107.0
+margin_bottom = 344.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="VolumeDown" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer"]
+margin_top = 12.0
+margin_right = 50.0
+margin_bottom = 62.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer"]
+margin_left = 82.0
+margin_right = 1025.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 25 )
+custom_icons/grabber = ExtResource( 25 )
+custom_styles/grabber_area_highlight = ExtResource( 5 )
+custom_styles/grabber_area = ExtResource( 2 )
+max_value = 1.0
+step = 0.05
+script = SubResource( 56 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="SoundButton" type="CheckButton" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 470.0
-margin_right = 952.0
-margin_bottom = 630.0
-custom_constants/hseparation = 0
-custom_fonts/font = ExtResource( 18 )
-custom_icons/off = SubResource( 57 )
-custom_icons/on_disabled = SubResource( 56 )
-custom_icons/on = SubResource( 56 )
-custom_icons/off_disabled = SubResource( 57 )
-custom_styles/hover = ExtResource( 6 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 12 )
-custom_styles/hover_pressed = ExtResource( 6 )
-custom_styles/normal = ExtResource( 6 )
-pressed = true
-text = "sound"
-icon = ExtResource( 27 )
-icon_align = 2
-script = ExtResource( 38 )
+[node name="VolumeUp" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer"]
+margin_left = 1057.0
+margin_top = 12.0
+margin_right = 1107.0
+margin_bottom = 62.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 24 )
+
+[node name="SoundSliderContainer" type="HBoxContainer" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 348.0
+margin_right = 1107.0
+margin_bottom = 423.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="VolumeDown" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer"]
+margin_top = 12.0
+margin_right = 50.0
+margin_bottom = 62.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer"]
+margin_left = 82.0
+margin_right = 1025.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 26 )
+custom_icons/grabber = ExtResource( 26 )
+custom_styles/grabber_area_highlight = ExtResource( 5 )
+custom_styles/grabber_area = ExtResource( 2 )
+max_value = 1.0
+step = 0.05
+script = SubResource( 56 )
 __meta__ = {
 "_editor_description_": ""
 }
+audio_bus_name = "SFX"
 
-[node name="HapticFeedbackButton" type="CheckButton" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 634.0
-margin_right = 952.0
-margin_bottom = 794.0
-custom_constants/hseparation = 0
+[node name="VolumeUp" type="TextureRect" parent="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer"]
+margin_left = 1057.0
+margin_top = 12.0
+margin_right = 1107.0
+margin_bottom = 62.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 24 )
+
+[node name="FullScreen" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 427.0
+margin_right = 1107.0
+margin_bottom = 550.0
+mouse_filter = 1
+custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
-custom_icons/off = SubResource( 57 )
-custom_icons/on_disabled = SubResource( 56 )
-custom_icons/on = SubResource( 56 )
-custom_icons/off_disabled = SubResource( 57 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 12 )
-custom_styles/hover_pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
-pressed = true
-text = "vibration"
-icon = ExtResource( 27 )
+toggle_mode = true
+text = "levels"
+icon = ExtResource( 15 )
+align = 0
 icon_align = 2
-script = ExtResource( 33 )
+expand_icon = true
+script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Quit" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
-margin_top = 798.0
-margin_right = 952.0
-margin_bottom = 958.0
+margin_top = 554.0
+margin_right = 1107.0
+margin_bottom = 677.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -566,17 +647,25 @@ custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "quit"
-icon = ExtResource( 27 )
+icon = ExtResource( 8 )
 align = 0
 icon_align = 2
+expand_icon = true
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
+
+[node name="SelectEffect" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 27 )
+volume_db = 10.0
+bus = "SFX"
 
 [connection signal="gui_input" from="GamePlayMenu/InfoBarMargin/InfoBar/Options" to="SettingsMenu/OptionsContainer" method="_on_Options_gui_input"]
 [connection signal="gui_input" from="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" to="." method="_on_SkipLevel_gui_input"]
@@ -584,7 +673,7 @@ bus = "Music"
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Previous" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Previous_pressed"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/HatSwitch/Next" to="SettingsMenu/OptionsContainer/OptionsList/HatSwitch" method="_on_Next_pressed"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/Levels" to="SettingsMenu/OptionsContainer" method="_on_Levels_pressed"]
-[connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/MusicButton" to="SettingsMenu/OptionsContainer/OptionsList/MusicButton" method="_on_MusicButton_toggled"]
-[connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/SoundButton" to="SettingsMenu/OptionsContainer/OptionsList/SoundButton" method="_on_SoundButton_toggled"]
-[connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" to="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" method="_on_HapticFeedbackButton_toggled"]
+[connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/FullScreen" to="SettingsMenu/OptionsContainer/OptionsList/FullScreen" method="_on_FullScreen_toggled"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/Quit" to="SettingsMenu/OptionsContainer" method="_on_Quit_pressed"]
