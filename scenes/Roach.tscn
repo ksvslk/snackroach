@@ -6569,6 +6569,7 @@ position = Vector2( 76.3655, 5.56663 )
 rotation = 0.365117
 scale = Vector2( 1.24224, 1.24224 )
 frames = SubResource( 28 )
+frame = 5
 speed_scale = 5.0
 playing = true
 
@@ -6577,7 +6578,7 @@ use_parent_material = true
 position = Vector2( 45.0096, -71.054 )
 rotation = -1.12019
 frames = SubResource( 28 )
-frame = 5
+frame = 2
 speed_scale = 3.0
 playing = true
 
@@ -6606,7 +6607,7 @@ position = Vector2( -45.7672, 73.7222 )
 rotation = -4.16359
 scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 28 )
-frame = 1
+frame = 6
 speed_scale = 5.0
 playing = true
 

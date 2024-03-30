@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://FullScreen.gd" type="Script" id=1]
 [ext_resource path="res://styles/BarStyleNormal.tres" type="StyleBox" id=2]
@@ -28,9 +28,11 @@
 [ext_resource path="res://graphics/sound_knob.png" type="Texture" id=26]
 [ext_resource path="res://sounds/select.wav" type="AudioStream" id=27]
 [ext_resource path="res://styles/GameOverMessage.tres" type="StyleBox" id=28]
-[ext_resource path="res://addons/controller_icons/assets/key/esc.png" type="Texture" id=29]
-[ext_resource path="res://addons/controller_icons/assets/key/enter_alt.png" type="Texture" id=30]
+[ext_resource path="res://addons/controller_icons/assets/mouse/left.png" type="Texture" id=29]
+[ext_resource path="res://addons/controller_icons/assets/key/s.png" type="Texture" id=30]
 [ext_resource path="res://addons/controller_icons/objects/Button.gd" type="Script" id=31]
+[ext_resource path="res://addons/controller_icons/assets/key/space.png" type="Texture" id=32]
+[ext_resource path="res://addons/controller_icons/assets/mouse/right.png" type="Texture" id=33]
 [ext_resource path="res://scripts/level_scroller.gd" type="Script" id=34]
 [ext_resource path="res://scripts/options_container.gd" type="Script" id=36]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
@@ -130,6 +132,7 @@ layer = 2
 [node name="InfoBarMargin" type="MarginContainer" parent="GamePlayMenu"]
 anchor_right = 1.0
 anchor_bottom = 0.075
+mouse_filter = 2
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -139,26 +142,29 @@ custom_constants/margin_bottom = 16
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 1904.0
-margin_bottom = 79.0
+margin_bottom = 116.0
+mouse_filter = 2
 size_flags_horizontal = 11
 size_flags_vertical = 11
 alignment = 1
 
 [node name="Options" type="Button" parent="GamePlayMenu/InfoBarMargin/InfoBar"]
-margin_bottom = 63.0
+margin_right = 100.0
+margin_bottom = 100.0
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
+icon = ExtResource( 30 )
 align = 0
 script = ExtResource( 31 )
 path = "open_options"
 
 [node name="LevelNr" type="Label" parent="GamePlayMenu/InfoBarMargin/InfoBar"]
-margin_left = 4.0
+margin_left = 104.0
 margin_right = 1888.0
-margin_bottom = 63.0
+margin_bottom = 100.0
 focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -174,6 +180,7 @@ anchor_top = 0.925
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -6.10352e-05
+mouse_filter = 2
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -282,9 +289,9 @@ autowrap = true
 
 [node name="RestartOrSkip" type="VBoxContainer" parent="GamePlayMenu/OverlayButton"]
 margin_left = 420.0
-margin_top = 414.0
+margin_top = 377.0
 margin_right = 1500.0
-margin_bottom = 665.0
+margin_bottom = 702.0
 rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -307,6 +314,7 @@ custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 25 )
 action_mode = 0
 text = "click_to_continue"
+icon = ExtResource( 32 )
 icon_align = 2
 script = ExtResource( 31 )
 __meta__ = {
@@ -330,7 +338,7 @@ custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
-icon = ExtResource( 30 )
+icon = ExtResource( 29 )
 clip_text = true
 icon_align = 2
 script = ExtResource( 31 )
@@ -343,9 +351,9 @@ path = "ui_accept"
 
 [node name="ContinueButton" type="Button" parent="GamePlayMenu/OverlayButton"]
 margin_left = 420.0
-margin_top = 508.0
+margin_top = 490.0
 margin_right = 1500.0
-margin_bottom = 571.0
+margin_bottom = 590.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -356,6 +364,7 @@ custom_styles/focus = SubResource( 25 )
 custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 25 )
 text = "click_to_continue"
+icon = ExtResource( 29 )
 icon_align = 2
 script = ExtResource( 31 )
 path = "ui_accept"
@@ -369,9 +378,9 @@ size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GamePlayMenu/OverlayTapsExceeded"]
 margin_left = 420.0
-margin_top = 414.0
+margin_top = 396.0
 margin_right = 1500.0
-margin_bottom = 665.0
+margin_bottom = 684.0
 rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -410,6 +419,7 @@ custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
+icon = ExtResource( 29 )
 clip_text = true
 icon_align = 2
 script = ExtResource( 31 )
@@ -503,6 +513,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 18 )
 custom_styles/focus = SubResource( 4 )
+icon = ExtResource( 33 )
 flat = true
 icon_align = 1
 script = ExtResource( 31 )
@@ -587,7 +598,7 @@ custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 12 )
 custom_styles/normal = ExtResource( 6 )
 text = "back"
-icon = ExtResource( 29 )
+icon = ExtResource( 33 )
 align = 0
 icon_align = 2
 expand_icon = true
