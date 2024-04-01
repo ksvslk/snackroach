@@ -17,8 +17,8 @@ func _set_text_and_icons():
 	if Data.get_fullscreen() == 1:
 		icon = load("res://icon/window.png")
 		text = tr("windowed")
-		print("Is fullscreen mode")
+		#"Is fullscreen mode")
 	else:
 		icon = load("res://icon/fullscreen.png")
 		text = tr("fullscreen")
-		print("Is windowed mode")
+		#"Is windowed mode")

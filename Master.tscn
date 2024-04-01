@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://FullScreen.gd" type="Script" id=1]
 [ext_resource path="res://styles/BarStyleNormal.tres" type="StyleBox" id=2]
@@ -34,7 +34,9 @@
 [ext_resource path="res://addons/controller_icons/assets/key/space.png" type="Texture" id=32]
 [ext_resource path="res://addons/controller_icons/assets/mouse/right.png" type="Texture" id=33]
 [ext_resource path="res://scripts/level_scroller.gd" type="Script" id=34]
+[ext_resource path="res://graphics/GUI 1.png" type="Texture" id=35]
 [ext_resource path="res://scripts/options_container.gd" type="Script" id=36]
+[ext_resource path="res://HapticFeedback.gd" type="Script" id=37]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
 [ext_resource path="res://scenes/HitArea.tscn" type="PackedScene" id=42]
 
@@ -119,6 +121,16 @@ func _get_current_volume() -> float:
 func _on_HSlider_mouse_exited():
 	release_focus()
 "
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 757, 178, 66, 69 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 842, 178, 66, 69 )
 
 [node name="Master" type="Node"]
 script = ExtResource( 13 )
@@ -339,7 +351,6 @@ custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
 icon = ExtResource( 29 )
-clip_text = true
 icon_align = 2
 script = ExtResource( 31 )
 __meta__ = {
@@ -363,6 +374,7 @@ custom_styles/pressed = SubResource( 25 )
 custom_styles/focus = SubResource( 25 )
 custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 25 )
+action_mode = 0
 text = "click_to_continue"
 icon = ExtResource( 29 )
 icon_align = 2
@@ -420,7 +432,6 @@ custom_styles/normal = ExtResource( 4 )
 action_mode = 0
 text = "try_again"
 icon = ExtResource( 29 )
-clip_text = true
 icon_align = 2
 script = ExtResource( 31 )
 __meta__ = {
@@ -529,9 +540,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -553.5
-margin_top = -459.0
+margin_top = -507.5
 margin_right = 553.5
-margin_bottom = 459.0
+margin_bottom = 507.5
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
@@ -733,10 +744,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Quit" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+[node name="HapticFeedbackButton" type="CheckButton" parent="SettingsMenu/OptionsContainer/OptionsList"]
 margin_top = 753.0
 margin_right = 1107.0
-margin_bottom = 876.0
+margin_bottom = 882.0
+mouse_filter = 1
+custom_constants/hseparation = 20
+custom_fonts/font = ExtResource( 18 )
+custom_icons/off = SubResource( 57 )
+custom_icons/on = SubResource( 58 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 12 )
+custom_styles/normal = ExtResource( 6 )
+text = "vibration"
+icon_align = 2
+expand_icon = true
+script = ExtResource( 37 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Quit" type="Button" parent="SettingsMenu/OptionsContainer/OptionsList"]
+margin_top = 898.0
+margin_right = 1107.0
+margin_bottom = 1021.0
 mouse_filter = 1
 custom_constants/hseparation = 20
 custom_fonts/font = ExtResource( 18 )
@@ -776,4 +808,5 @@ bus = "SFX"
 [connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/MusicSliderContainer/HSlider" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" to="SettingsMenu/OptionsContainer/OptionsList/SoundSliderContainer/HSlider" method="_on_HSlider_value_changed"]
 [connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/FullScreen" to="SettingsMenu/OptionsContainer/OptionsList/FullScreen" method="_on_FullScreen_toggled"]
+[connection signal="toggled" from="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" to="SettingsMenu/OptionsContainer/OptionsList/HapticFeedbackButton" method="_on_HapticFeedbackButton_toggled"]
 [connection signal="pressed" from="SettingsMenu/OptionsContainer/OptionsList/Quit" to="SettingsMenu/OptionsContainer" method="_on_Quit_pressed"]

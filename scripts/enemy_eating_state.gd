@@ -7,7 +7,10 @@ onready var audio_stream_player_2d = $AudioStreamPlayer2D
 	
 	
 func enter(_msg: Dictionary = {}) -> void:
-	enemy.z_index = C.enemy_eating_z_index
+	if enemy.is_on_roof:
+		enemy.z_index = C.roach_on_roof_z_index + 1
+	else:
+		enemy.z_index = C.enemy_eating_z_index
 	enemy.set_collision_layer_bit(13, false)
 	enemy.animation_player.playback_speed = 5
 	enemy.animation_player.play(C.walking_animation)

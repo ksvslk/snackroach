@@ -154,7 +154,7 @@ func _connect_signals():
 
 
 func _on_Level_game_over():
-	print("game over _on_Level_game_over: ", game_state)
+	#"game over _on_Level_game_over: ", game_state)
 	Data.unlock_regular_achievements_in_bulk()
 	if not overlay_taps_exceeded.visible and not overlay_button.visible:
 		game_state = GameState.FAIL
@@ -210,7 +210,7 @@ func _log_event():
 
 
 func _on_Level_finished():
-	print("game_state _on_Level_finished: ", game_state)
+	#"game_state _on_Level_finished: ", game_state)
 	game_state = GameState.COMPLETE
 	_animate_overlay_button()
 	var info = Data.get_finish_line_info(total_taps_tapped, level.par, level.snacks.snacks_count)
@@ -403,7 +403,7 @@ func _on_DebugContinue_pressed():
 	if temp_comps.size() > 0:
 		$GamePlayMenu/OverlayButton/TV/Info/Compliment.text = temp_comps.pop_at(0)
 	else:
-		print("Compliments checked for: ", TranslationServer.get_locale())
+		#"Compliments checked for: ", TranslationServer.get_locale())
 		temp_comps.append_array(comps)
 
 

@@ -10,7 +10,7 @@ func _ready():
 		
 func _set(property, value):
 	if property == "text" and value != "":
-		print("Setting text: ", value)
+		#"Setting text: ", value)
 		visible = true
 
 

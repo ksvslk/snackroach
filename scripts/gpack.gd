@@ -92,7 +92,7 @@ func increment_achievement(id: String, num_steps: int) -> void:
 		var ios_achievement = map_android_achievement_to_ios(id)
 		var increment = get_increment_for_achievement(ios_achievement)
 		var new_progress = Data.increase_achievement_progress(ios_achievement, increment)
-		print("New progress for ", ios_achievement, " is ", new_progress)
+		#"New progress for ", ios_achievement, " is ", new_progress)
 		game_center.award_achievement({ 
 			"name":ios_achievement,
 			"progress":new_progress,
@@ -183,9 +183,9 @@ func perform_haptic_feedback(constant:int) -> void:
 		elif constant == C.soft_vibration:
 			Input.start_joy_vibration(0, 0.1, 0.0, 0.1)
 		elif constant == C.fail_vibration:
-			Input.start_joy_vibration(0, 0.0, 0.4, 0.1)
+			Input.start_joy_vibration(0, 0.4, 0.0, 0.4)
 		elif constant == C.success_vibration:
-			Input.start_joy_vibration(0, 0.0, 0.2, 0.5)
+			Input.start_joy_vibration(0, 0.2, 0.0, 0.2)
 
 
 # Signals you can connect to in the Android plugin.

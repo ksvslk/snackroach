@@ -75,7 +75,6 @@ tile_data = PoolIntArray( 1179649, 48, 0, 1179650, 58, 0, 1179651, 1073741882, 0
 [node name="Spider" parent="Navigation2D" instance=ExtResource( 7 )]
 position = Vector2( 2555.21, 5150.12 )
 rotation = 4.71239
-collision_mask = 4098
 path_to_player = NodePath("../../Roach")
 inital_tempo = 12
 
@@ -113,7 +112,6 @@ throwing_radius = 200.0
 [node name="TrafficLight" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1304.55, 4066.78 )
 path_to_player = NodePath("../Roach")
-green_light_seconds = 1000.0
 
 [connection signal="body_shape_entered" from="Snack" to="." method="_on_Snack_body_shape_entered"]
 [connection signal="dead" from="Roach" to="." method="_on_Roach_dead"]

@@ -131,7 +131,7 @@ func set_active_for_bonus_menu(product_id: String):
 func update_ios_products_buttons(response_event):
 	for index in range(response_event.ids.size()):
 		var product_id = response_event.ids[index]
-		print("response event: ", response_event)
+		#print("response event: ", response_event)
 		var title = response_event["titles"][index]
 		var price = response_event["localized_prices"][index]
 		if product_id == UNLOCK_ALL_LEVELS:

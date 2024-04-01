@@ -93,11 +93,6 @@ func _physics_process(delta):
 	var velocity = Input.get_vector("l", "r", "u", "d")
 	var movement = 1500.0 * velocity * delta
 	if movement and get_parent().game_state == 0:
-		print("Left strength:", Input.get_action_strength("l"))
-		print("Right strength:", Input.get_action_strength("r"))
-		print("Up strength:", Input.get_action_strength("u"))
-		print("Down strength:", Input.get_action_strength("d"))
-		print("velocity: ", velocity)
 		var final_pos = Vector2(m.x, m.y) + movement
 		get_viewport().warp_mouse(final_pos)
 		m = final_pos
@@ -105,9 +100,7 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
-		print("LEVEL CLICK")
 		if event is InputEventMouseButton && tapping_enabled:
-			print("Mouse click")
 			roach.cursor_position = get_global_mouse_position()
 			roach.state_machine.state.handle_input(event)
 			var tap_mark = load("res://scenes/TapMark.tscn").instance()
@@ -115,7 +108,6 @@ func _unhandled_input(event):
 			tap_mark.set("global_position", roach.cursor_position)
 			GPack.perform_haptic_feedback(C.tap_vibration)
 		elif event is InputEventJoypadButton && tapping_enabled:
-			print("Joy button click")
 			roach.cursor_position = m
 			roach.state_machine.state.handle_input(event)
 			var tap_mark = load("res://scenes/TapMark.tscn").instance()

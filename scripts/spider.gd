@@ -98,7 +98,7 @@ func is_ready_to_eat() -> bool:
 
 func _on_LaserDetection_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if not is_dead:
-		if body.name == "Obstacle" or body.name == "Lava":
+		if body.name == "Obstacle" or (body.name == "Lava" and not is_on_roof):
 			is_dead = true
 			state_machine.transition_to(C.smashed_state)
 			

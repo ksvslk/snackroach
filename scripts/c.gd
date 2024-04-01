@@ -230,7 +230,7 @@ const luminosity_while_on_roof: float = 0.2
 func get_top_safe_margin() -> float:
 	var safe_area = OS.get_window_safe_area()
 	var top_no_go_area = Rect2(0, 0, safe_area.size.x, safe_area.position.y)
-	print("top_no_go_area.position.y: ", top_no_go_area.position.y)
+	#"top_no_go_area.position.y: ", top_no_go_area.position.y)
 	if (top_no_go_area.size.y > 0):
 		return top_no_go_area.size.y
 	else:
@@ -242,7 +242,7 @@ func get_bottom_safe_margin() -> float:
 	var screen_rect = Rect2(Vector2(0,0), Vector2(safe_area.size.x + safe_area.position.x, safe_area.size.y + safe_area.position.y))
 	var top_no_go_area = Rect2(0, 0, safe_area.size.x, safe_area.position.y)
 	var bottom_no_go_area = Rect2(0, top_no_go_area.end.y + safe_area.size.y, safe_area.size.x, screen_rect.size.y - top_no_go_area.position.y - safe_area.size.y)
-	print("bottom_no_go_area.size.y: ", bottom_no_go_area.size.y)
+	#"bottom_no_go_area.size.y: ", bottom_no_go_area.size.y)
 	if (top_no_go_area.size.y > 0):
 		return bottom_no_go_area.size.y
 	else:

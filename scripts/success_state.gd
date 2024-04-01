@@ -20,7 +20,7 @@ func enter(_msg: Dictionary = {}) -> void:
 	cockroach.velocity = velocity_vector.normalized() * cockroach.walking_speed
 	cockroach.animation_player.playback_speed = cockroach.animation_speed
 	cockroach.animation_player.play(C.walking_animation)
-	print(points.size())
+	#points.size())
 
 
 func exit() -> void:

@@ -93,7 +93,7 @@ func physics_update(_delta: float) -> void:
 	if enemy.red_light:
 		enemy.state_machine.transition_to(C.idle_state)
 	enemy.emit_signal("debug_path_points", enemy.agent.get_nav_path())
-	if enemy.agent.is_navigation_finished():
+	if enemy.agent.is_navigation_finished() || not enemy.agent.is_target_reachable():
 		enemy.state_machine.transition_to(C.idle_state)
 	var next_location = enemy.agent.get_next_location()
 	var direction := enemy.global_position.direction_to(enemy.agent.get_next_location())

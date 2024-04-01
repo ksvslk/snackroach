@@ -6,6 +6,8 @@
 [ext_resource path="res://scripts/ending.gd" type="Script" id=5]
 
 [node name="Ending" type="Node2D"]
+position = Vector2( 2093, -45 )
+rotation = 1.57079
 scale = Vector2( 0.353, 0.353 )
 script = ExtResource( 5 )
 

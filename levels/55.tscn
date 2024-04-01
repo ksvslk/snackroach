@@ -72,7 +72,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 par = 4
-max_taps = 6
+max_taps = 9
 rewarded_taps_amount = 2
 
 [node name="Debug" type="Line2D" parent="."]

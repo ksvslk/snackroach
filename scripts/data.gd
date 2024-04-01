@@ -322,6 +322,10 @@ func get_fullscreen() -> int:
 func _set_haptic_feedback():
 	GPack.haptic_enabled = get_haptic_feedback_state()
 
+func set_haptic_feedback_state(value:int) -> void:
+	_config.set_value(C.various_section, C.global_haptic_feedback, value)
+	_config.save(_path)
+	
 func get_haptic_feedback_state() -> bool:
 	return _config.get_value(C.various_section, C.global_haptic_feedback)
 
