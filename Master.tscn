@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://FullScreen.gd" type="Script" id=1]
 [ext_resource path="res://styles/BarStyleNormal.tres" type="StyleBox" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://graphics/GUI 1.png" type="Texture" id=35]
 [ext_resource path="res://scripts/options_container.gd" type="Script" id=36]
 [ext_resource path="res://HapticFeedback.gd" type="Script" id=37]
+[ext_resource path="res://fonts/TVTextButton.tres" type="DynamicFont" id=38]
 [ext_resource path="res://shader/TVNoiseMaterial.tres" type="Material" id=41]
 [ext_resource path="res://scenes/HitArea.tscn" type="PackedScene" id=42]
 
@@ -248,7 +249,7 @@ __meta__ = {
 }
 
 [node name="TV" type="Sprite" parent="GamePlayMenu/OverlayButton"]
-position = Vector2( 540, 1811 )
+position = Vector2( 960, 880 )
 texture = ExtResource( 22 )
 __meta__ = {
 "_edit_group_": true
@@ -256,44 +257,39 @@ __meta__ = {
 
 [node name="Shader" type="ColorRect" parent="GamePlayMenu/OverlayButton/TV"]
 material = ExtResource( 41 )
-margin_left = -240.0
-margin_top = -171.0
-margin_right = 147.0
-margin_bottom = 147.0
+margin_left = -209.0
+margin_top = -147.0
+margin_right = 128.0
+margin_bottom = 130.0
 
 [node name="RoachHost" type="Sprite" parent="GamePlayMenu/OverlayButton/TV"]
-position = Vector2( 120, 132 )
+position = Vector2( 104, 113 )
 texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 50, 89 )
 
 [node name="Info" type="VBoxContainer" parent="GamePlayMenu/OverlayButton/TV"]
-margin_left = -225.0
-margin_top = -128.0
-margin_right = 127.0
-margin_bottom = 113.0
+margin_left = -203.0
+margin_top = -142.0
+margin_right = 120.0
+margin_bottom = 104.0
 custom_constants/separation = 30
 alignment = 1
 
 [node name="Result" parent="GamePlayMenu/OverlayButton/TV/Info" instance=ExtResource( 23 )]
-margin_right = 352.0
-margin_bottom = 49.0
+margin_top = 33.0
+margin_right = 323.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 38 )
 text = "EAGLE: -2"
-align = 1
-
-[node name="Score" parent="GamePlayMenu/OverlayButton/TV/Info" instance=ExtResource( 23 )]
-margin_top = 79.0
-margin_right = 352.0
-margin_bottom = 128.0
-text = ""
 align = 1
 
 [node name="Compliment" type="Label" parent="GamePlayMenu/OverlayButton/TV/Info"]
 modulate = Color( 1, 1, 1, 0.870588 )
-margin_top = 158.0
-margin_right = 352.0
-margin_bottom = 259.0
-custom_fonts/font = ExtResource( 18 )
+margin_top = 112.0
+margin_right = 323.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 38 )
 text = "WELL, YOU FINISHED!"
 align = 1
 valign = 1
@@ -314,9 +310,8 @@ __meta__ = {
 }
 
 [node name="SkipLevel" type="Button" parent="GamePlayMenu/OverlayButton/RestartOrSkip"]
-margin_top = 194.0
 margin_right = 1080.0
-margin_bottom = 263.0
+margin_bottom = 100.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 18 )
 custom_styles/hover = SubResource( 25 )
@@ -337,9 +332,9 @@ path = "ui_skip"
 [node name="HitArea" parent="GamePlayMenu/OverlayButton/RestartOrSkip/SkipLevel" instance=ExtResource( 42 )]
 
 [node name="RestartButton" type="Button" parent="GamePlayMenu/OverlayButton/RestartOrSkip"]
-margin_top = 388.0
+margin_top = 225.0
 margin_right = 1080.0
-margin_bottom = 457.0
+margin_bottom = 325.0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 18 )
@@ -460,7 +455,6 @@ script = ExtResource( 17 )
 __meta__ = {
 "_editor_description_": ""
 }
-enable_fps = true
 
 [node name="SettingsMenu" type="CanvasLayer" parent="."]
 pause_mode = 2

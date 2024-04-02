@@ -44,29 +44,29 @@ shader_param/speed = 3.435
 shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=51]
-vertices = PoolVector2Array( 1125.88, 4185.89, 1483.21, 4188.73, 1488.88, 4787.12, 1125.88, 4784.28 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1125.88, 4784.28, 1488.88, 4787.12, 1483.21, 4188.73, 1125.88, 4185.89 ) ]
+vertices = PoolVector2Array( 1124.52, 4756.24, 1125.83, 4204.8, 1149.6, 4186.08, 1452.89, 4188.49, 1483.51, 4212.92, 1490.35, 4770.53, 1461.25, 4786.9, 1154.23, 4784.5 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
+outlines = [ PoolVector2Array( 1154.23, 4784.5, 1461.25, 4786.9, 1490.35, 4770.53, 1483.51, 4212.92, 1452.89, 4188.49, 1149.6, 4186.08, 1125.83, 4204.8, 1124.52, 4756.24 ) ]
 
 [sub_resource type="NavigationPolygon" id=52]
-vertices = PoolVector2Array( 1230.81, 3944.83, 1358.43, 3944.83, 1358.43, 4188.73, 1233.65, 4188.73 )
+vertices = PoolVector2Array( 1150.26, 3979.2, 1448.04, 3979.28, 1450.82, 4186.31, 1150.21, 4183.39 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1230.81, 3944.83, 1358.43, 3944.83, 1358.43, 4188.73, 1233.65, 4188.73 ) ]
+outlines = [ PoolVector2Array( 1150.26, 3979.2, 1448.04, 3979.28, 1450.82, 4186.31, 1150.21, 4183.39 ) ]
 
 [sub_resource type="NavigationPolygon" id=53]
-vertices = PoolVector2Array( 2132.65, 3630.04, 2132.65, 4784.28, 1738.45, 4775.77, 1732.78, 3942, 802.58, 3624.37, 272.253, 3944.83, 263.745, 3414.51, 796.908, 3403.16 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ), PoolIntArray( 4, 5, 6, 7 ) ]
-outlines = [ PoolVector2Array( 1738.45, 4775.77, 1732.78, 3942, 272.253, 3944.83, 263.745, 3414.51, 796.908, 3403.16, 802.58, 3624.37, 2132.65, 3630.04, 2132.65, 4784.28 ) ]
+vertices = PoolVector2Array( 2157.13, 3630.66, 2159.66, 4725.35, 2108.59, 4776.38, 1762.61, 4776.28, 1705.9, 4745.07, 1708.94, 4007.72, 2106.1, 3573.93, 1674.92, 3970.84, 897.976, 3584.92, 271.112, 3984.62, 855.442, 3567.9, 228.58, 3959.08, 225.893, 3440.1, 288.302, 3377.72, 807.284, 3380.71, 858.319, 3423.26 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ), PoolIntArray( 6, 5, 7 ), PoolIntArray( 8, 6, 7, 9 ), PoolIntArray( 10, 8, 9, 11, 12, 13 ), PoolIntArray( 10, 13, 14, 15 ) ]
+outlines = [ PoolVector2Array( 1705.9, 4745.07, 1708.94, 4007.72, 1674.92, 3970.84, 271.112, 3984.62, 228.58, 3959.08, 225.893, 3440.1, 288.302, 3377.72, 807.284, 3380.71, 858.319, 3423.26, 855.442, 3567.9, 897.976, 3584.92, 2106.1, 3573.93, 2157.13, 3630.66, 2159.66, 4725.35, 2108.59, 4776.38, 1762.61, 4776.28 ) ]
 
 [sub_resource type="NavigationPolygon" id=54]
-vertices = PoolVector2Array( 1990.85, 4781.45, 2002.19, 4917.57, 1851.89, 4917.57, 1849.05, 4778.61 )
+vertices = PoolVector2Array( 2102.92, 4779.21, 2102.88, 4918.18, 1751.22, 4918.07, 1756.93, 4779.11 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1849.05, 4778.61, 1851.89, 4917.57, 2002.19, 4917.57, 1990.85, 4781.45 ) ]
+outlines = [ PoolVector2Array( 1756.93, 4779.11, 1751.22, 4918.07, 2102.88, 4918.18, 2102.92, 4779.21 ) ]
 
 [sub_resource type="NavigationPolygon" id=55]
-vertices = PoolVector2Array( 1741.29, 4920.41, 2132.65, 4917.57, 2135.49, 5201.17, 1741.29, 5204.01 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1741.29, 4920.41, 2132.65, 4917.57, 2135.49, 5201.17, 1741.29, 5204.01 ) ]
+vertices = PoolVector2Array( 1756.89, 4920.91, 2108.55, 4918.18, 2132.92, 4944.54, 2134, 5176.26, 2097.46, 5201.44, 1777.07, 5203.75, 1741.29, 5183.58, 1741.29, 4952.12 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
+outlines = [ PoolVector2Array( 1756.89, 4920.91, 2108.55, 4918.18, 2132.92, 4944.54, 2134, 5176.26, 2097.46, 5201.44, 1777.07, 5203.75, 1741.29, 5183.58, 1741.29, 4952.12 ) ]
 
 [sub_resource type="CapsuleShape2D" id=56]
 resource_local_to_scene = true
@@ -292,6 +292,7 @@ enabled = false
 navpoly = SubResource( 53 )
 
 [node name="Passage1" type="NavigationPolygonInstance" parent="Navigation2D"]
+position = Vector2( 5.67194, 0.00146484 )
 navpoly = SubResource( 54 )
 enabled = false
 

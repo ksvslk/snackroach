@@ -13,8 +13,6 @@ const SNACK_PENALTY := 50
 var current_par := -1
 var current_level := "-1"
 
-var regular_achievements_to_unlock = []
-
 ########################
 #	 DATABASE PART	  #
 ########################	
@@ -64,25 +62,9 @@ signal level_unlocked(index)
 signal roach_hat_change
 
 
-func add_regular_achievement(id:String):
-	regular_achievements_to_unlock.append(id)
-
-
-func unlock_regular_achievements_in_bulk():
-	for ach in regular_achievements_to_unlock:
-		GPack.unlock_achievement(ach)
-	regular_achievements_to_unlock.clear()
-
-
 func increase_taps():
 	emit_signal("tap")
 
-
-func increase_taps_reward_count():
-	var rewards = _config.get_value(current_level, C.taps_reward_count)
-	_config.set_value(current_level, C.taps_reward_count, rewards + 1)
-	_config.save(_path)
-	
 	
 func load_current_level():
 	current_level = String(_config.get_value(C.various_section, C.current_level_key))
@@ -174,7 +156,6 @@ func get_finish_line_info(taps: int, par: int, snacks: int) -> Array:
 	_increment_achievements(taps, diff)
 	_save_current_level_new_score(taps, current_level_new_score)
 	var total_score = _get_total_score()
-	GPack.submit_score(total_score, C.kingd_of_evolution_leaderboard, show_scores)
 
 	if taps == 1:
 		compliment = tr("woohoo")+"\u00A0"
@@ -243,8 +224,8 @@ func _increment_achievements(taps, diff):
 	var passed_with_hole_in_one = _config.get_value(current_level, C.passed_with_hole_in_one)
 	if taps == 1:
 		if not passed_with_hole_in_one:
-			GPack.increment_achievement(C.achievement_5xholeinone, 1)
-			_config.set_value(current_level, C.passed_with_hole_in_one, 1)
+			GlobalSteam.increase_stat_by_1(GlobalSteam.hole_in_one_stat_ach)
+			_config.set_value(current_level, GlobalSteam.hole_in_one_stat_ach, 1)
 	match diff:
 		-4:
 			#codeword ="Condor: -4"
@@ -255,30 +236,22 @@ func _increment_achievements(taps, diff):
 		-2:
 			#codeword ="Eagle: -2"
 			if not passed_with_eagle:
-				GPack.increment_achievement(C.achievement_10xeagle, 1)
-				_config.set_value(current_level, C.passed_with_eagle, 1)
+				GlobalSteam.increase_stat_by_1(GlobalSteam.eagles_stat_ach)
+				_config.set_value(current_level, GlobalSteam.eagles_stat_ach, 1)
 		-1:
 			#codeword ="Birdie: -1"
 			if not passed_with_birdie:
-				GPack.increment_achievement(C.achievement_20xbirdie, 1)
-				_config.set_value(current_level, C.passed_with_birdie, 1)
+				GlobalSteam.increase_stat_by_1(GlobalSteam.birdies_stat_ach)
+				_config.set_value(current_level, GlobalSteam.birdies_stat_ach, 1)
 		0:
 			#codeword ="Par: 0"
 			if not passed_with_par:
-				GPack.increment_achievement(C.achievement_30xpar, 1)
-				_config.set_value(current_level, C.passed_with_par, 1)
+				GlobalSteam.increase_stat_by_1(GlobalSteam.pars_stat_ach)
+				_config.set_value(current_level, GlobalSteam.pars_stat_ach, 1)
 		1:
 			pass
 			#codeword = "Bogey: +1"
 	_config.save(_path)
-
-
-func increase_achievement_progress(id:String, increment:float) -> float:
-	var current_progress = _config.get_value(C.various_section, id)
-	var new_progress = float(current_progress) + increment
-	_config.set_value(C.various_section, id, new_progress)
-	_config.save(_path)
-	return new_progress
 
 
 func get_levels() -> Dictionary:

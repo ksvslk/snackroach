@@ -35,10 +35,10 @@ func _on_GlobalLightSwitcher_area_shape_entered(area_rid, area, area_shape_index
 
 func _handle_chamber_entering():
 	if chamber_name == "Secret11":
-		GPack.unlock_achievement(C.achievementSecretRoom1)
+		GlobalSteam.unlock_achievement_by_name(GlobalSteam.secret1_achievement)
 		$ChamberEnteringSound.play()
 	elif chamber_name == "Secret20":
-		GPack.unlock_achievement(C.achievementSecretRoom2)
+		GlobalSteam.unlock_achievement_by_name(GlobalSteam.secret2_achievement)
 		$ChamberEnteringSound.play()
 
 

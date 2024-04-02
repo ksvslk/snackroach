@@ -6282,6 +6282,7 @@ position = Vector2( -3, -48 )
 [node name="WallDetection" type="CollisionShape2D" parent="."]
 position = Vector2( -17, -4 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )

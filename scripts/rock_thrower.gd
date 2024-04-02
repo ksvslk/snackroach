@@ -124,7 +124,7 @@ func _add_impact_particles(b_global_position: Vector2, overlapping_bodies: Array
 				impact.launch(b_global_position, target, Color(0,0,0,0), true, target.is_under_roof)
 		if ob is Spider or ob is TitanBeetle:
 			if not ob.is_under_roof:
-				Data.add_regular_achievement(C.achievement_neutralize_with_rock)
+				GlobalSteam.unlock_achievement_by_name(GlobalSteam.rock_achievement)
 				impact.launch(b_global_position, target, Color(0,0,0,0), false, true, target.is_under_roof)
 				ob.state_machine.transition_to(C.smashed_state)
 		elif ob is AdjustableTileMap:

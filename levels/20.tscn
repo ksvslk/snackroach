@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/level_scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/restorable_tilemap.gd" type="Script" id=2]
@@ -19,35 +19,30 @@
 radius = 303.325
 height = 459.534
 
-[sub_resource type="NavigationPolygon" id=48]
-vertices = PoolVector2Array( 1562.62, 1361.27, 1565.45, 1474.7, 1361.26, 1474.7, 1364.1, 1361.27 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1364.1, 1361.27, 1361.26, 1474.7, 1565.45, 1474.7, 1562.62, 1361.27 ) ]
-
 [sub_resource type="NavigationPolygon" id=49]
-vertices = PoolVector2Array( 635.257, 1179.76, 635.257, 499.131, 2473.6, 499.131, 1315.89, 1179.76, 1610.83, 1361.27, 1406.64, 1361.27, 1837.71, 1179.76, 2268.78, 1179.76, 2654.47, 659.636, 2404.9, 1361.27, 2654.47, 1179.76, 2609.09, 1361.27 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 3, 2, 6 ), PoolIntArray( 7, 6, 2, 8 ), PoolIntArray( 9, 7, 8, 10, 11 ) ]
-outlines = [ PoolVector2Array( 635.257, 499.131, 2473.6, 499.131, 2654.47, 659.636, 2654.47, 1179.76, 2609.09, 1361.27, 2404.9, 1361.27, 2268.78, 1179.76, 1837.71, 1179.76, 1610.83, 1361.27, 1406.64, 1361.27, 1315.89, 1179.76, 635.257, 1179.76 ) ]
+vertices = PoolVector2Array( 1224.67, 1251.18, 674.987, 1184.57, 635.301, 1138.82, 636.028, 455.737, 667.688, 423.911, 2669.42, 406.162, 2822.71, 485.278, 2821.19, 1180.1, 1871.28, 1252.79, 2832.47, 4168.88, 2793.4, 4200.04, 2334.64, 4195.97, 2305.22, 4164.95, 2316.71, 1351.21, 2239.97, 1260.6, 1610.83, 1361.27, 1406.64, 1361.27 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ), PoolIntArray( 7, 9, 10, 11, 12, 13 ), PoolIntArray( 7, 13, 14 ), PoolIntArray( 15, 16, 0, 8 ), PoolIntArray( 8, 7, 14 ) ]
+outlines = [ PoolVector2Array( 667.688, 423.911, 2669.42, 406.162, 2822.71, 485.278, 2821.19, 1180.1, 2832.47, 4168.88, 2793.4, 4200.04, 2334.64, 4195.97, 2305.22, 4164.95, 2316.71, 1351.21, 2239.97, 1260.6, 1871.28, 1252.79, 1610.83, 1361.27, 1406.64, 1361.27, 1224.67, 1251.18, 674.987, 1184.57, 635.301, 1138.82, 636.028, 455.737 ) ]
 
 [sub_resource type="NavigationPolygon" id=50]
-vertices = PoolVector2Array( 2609.09, 1474.7, 2677.16, 1588.14, 2665.81, 4132.01, 2351.02, 4129.17, 2348.18, 1585.31, 2404.9, 1474.7 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
-outlines = [ PoolVector2Array( 2404.9, 1474.7, 2348.18, 1585.31, 2351.02, 4129.17, 2665.81, 4132.01, 2677.16, 1588.14, 2609.09, 1474.7 ) ]
+vertices = PoolVector2Array( 2626.96, 3443.57, 2627.18, 3557.01, 2420.15, 3557.4, 2422.77, 3443.96 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 2422.77, 3443.96, 2420.15, 3557.4, 2627.18, 3557.01, 2626.96, 3443.57 ) ]
 
 [sub_resource type="NavigationPolygon" id=51]
-vertices = PoolVector2Array( 2699.84, 5399.69, 2356.69, 5399.69, 2351.02, 4792.79, 2441.77, 4571.58, 2353.86, 4075.29, 2348.18, 1585.31, 2404.9, 1474.7, 2609.09, 1474.7, 2677.16, 1588.14, 2438.93, 4265.3 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9 ), PoolIntArray( 8, 0, 3, 9 ) ]
-outlines = [ PoolVector2Array( 2404.9, 1474.7, 2348.18, 1585.31, 2353.86, 4075.29, 2438.93, 4265.3, 2441.77, 4571.58, 2351.02, 4792.79, 2356.69, 5399.69, 2699.84, 5399.69, 2677.16, 1588.14, 2609.09, 1474.7 ) ]
+vertices = PoolVector2Array( 2344.84, 3790.93, 2288.76, 3796.3, 2273.33, 3776.28, 2294.42, 1560.17, 2404.9, 1474.7, 2609.09, 1474.7, 2773.74, 1579.11, 2792.33, 5448.85, 2765.68, 5475.76, 2363.04, 3812.84, 2284.74, 5476.67, 2242.22, 5440.83, 2233.47, 5063.53, 2251.78, 5040.94, 2323.67, 5023.78, 2351.02, 4792.79 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6, 7, 8, 9 ), PoolIntArray( 8, 10, 11, 12, 13, 14 ), PoolIntArray( 8, 14, 15 ), PoolIntArray( 9, 0, 3 ), PoolIntArray( 9, 8, 15 ) ]
+outlines = [ PoolVector2Array( 2404.9, 1474.7, 2294.42, 1560.17, 2273.33, 3776.28, 2288.76, 3796.3, 2344.84, 3790.93, 2363.04, 3812.84, 2351.02, 4792.79, 2323.67, 5023.78, 2251.78, 5040.94, 2233.47, 5063.53, 2242.22, 5440.83, 2284.74, 5476.67, 2765.68, 5475.76, 2792.33, 5448.85, 2773.74, 1579.11, 2609.09, 1474.7 ) ]
 
 [sub_resource type="NavigationPolygon" id=52]
-vertices = PoolVector2Array( 1361.27, 3959.01, 1344.25, 3973.19, 521.819, 3976.03, 521.819, 3953.44, 539.575, 3939.04, 1344.25, 3930.66, 1361.27, 3947.67 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ) ]
-outlines = [ PoolVector2Array( 1361.27, 3947.67, 1344.25, 3930.66, 539.575, 3939.04, 521.819, 3953.44, 521.819, 3976.03, 1344.25, 3973.19, 1361.27, 3959.01 ) ]
+vertices = PoolVector2Array( 1365.66, 3761.73, 1360.7, 4137.96, 1344.79, 4119.43, 1347.47, 3740.73, 795.213, 4081.22, 761.465, 4053.45, 648.108, 3733.76 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 3, 2 ) ]
+outlines = [ PoolVector2Array( 1347.47, 3740.73, 648.108, 3733.76, 761.465, 4053.45, 795.213, 4081.22, 1344.79, 4119.43, 1360.7, 4137.96, 1365.66, 3761.73 ) ]
 
 [sub_resource type="NavigationPolygon" id=53]
-vertices = PoolVector2Array( 541.67, 3150.76, 570.03, 3150.76, 541.67, 3193.86, 516.147, 3150.76, 505.158, 3939.18, 541.67, 3888.12, 571.804, 3919.52, 524.643, 3964.82, 1352.76, 3953.34, 1324.4, 3970.36, 1322.17, 3924.73, 1352.76, 3939.16 )
-polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 0, 2, 4 ), PoolIntArray( 4, 2, 5 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 7, 6, 10, 11 ) ]
-outlines = [ PoolVector2Array( 1352.76, 3939.16, 1322.17, 3924.73, 571.804, 3919.52, 541.67, 3888.12, 541.67, 3193.86, 570.03, 3150.76, 541.67, 3150.76, 516.147, 3150.76, 505.158, 3939.18, 524.643, 3964.82, 1324.4, 3970.36, 1352.76, 3953.34 ) ]
+vertices = PoolVector2Array( 466.107, 4142.48, 363.894, 4080.28, 358.991, 2934.71, 405.849, 2892.4, 611.425, 2894.07, 649.37, 2914.6, 755.542, 3223.96, 767.885, 3259.92, 766.424, 3288.02, 743.258, 3733.57, 811.488, 3821.36, 1325.17, 4135.21, 1299.66, 4151.94, 1167.13, 3812.18, 1352.76, 3953.34, 1218.07, 3755.36, 1334.44, 3298.91, 1352.19, 3321.29, 1230.24, 3304.6, 1252.48, 3287.64 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ), PoolIntArray( 0, 6, 7, 8 ), PoolIntArray( 0, 8, 9 ), PoolIntArray( 0, 9, 10 ), PoolIntArray( 11, 12, 0, 10, 13, 14 ), PoolIntArray( 14, 13, 15 ), PoolIntArray( 16, 17, 14, 15, 18, 19 ) ]
+outlines = [ PoolVector2Array( 1334.44, 3298.91, 1252.48, 3287.64, 1230.24, 3304.6, 1218.07, 3755.36, 1167.13, 3812.18, 811.488, 3821.36, 743.258, 3733.57, 766.424, 3288.02, 767.885, 3259.92, 755.542, 3223.96, 649.37, 2914.6, 611.425, 2894.07, 405.849, 2892.4, 358.991, 2934.71, 363.894, 4080.28, 466.107, 4142.48, 1299.66, 4151.94, 1325.17, 4135.21, 1352.76, 3953.34, 1352.19, 3321.29 ) ]
 
 [sub_resource type="RectangleShape2D" id=54]
 resource_local_to_scene = true
@@ -126,22 +121,16 @@ rotation = 4.71239
 path_to_player = NodePath("../../Roach")
 inital_tempo = 12
 
-[node name="LaserPolygon1" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 45.3755, 0 )
-navpoly = SubResource( 48 )
-
-[node name="LaserPolygon2" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 1043.64, 0 )
-navpoly = SubResource( 48 )
-
 [node name="TopPart" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 49 )
 
-[node name="RightPart" type="NavigationPolygonInstance" parent="Navigation2D"]
+[node name="Lzer" type="NavigationPolygonInstance" parent="Navigation2D"]
+position = Vector2( -1016.39, -2082.52 )
 navpoly = SubResource( 50 )
+enabled = false
 
 [node name="LeftPart" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( -998.262, 0 )
+position = Vector2( -998.26, 1.89014 )
 navpoly = SubResource( 51 )
 
 [node name="SwitchPart" type="NavigationPolygonInstance" parent="Navigation2D"]
@@ -149,17 +138,17 @@ position = Vector2( -5.67194, 56.7194 )
 navpoly = SubResource( 52 )
 
 [node name="SwitchPart2" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 0, 881.987 )
+position = Vector2( -1.17651, 876.319 )
 navpoly = SubResource( 53 )
 
 [node name="Roach" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1511.57, 5150.12 )
+position = Vector2( 1532.78, 5209.62 )
 rotation = -1.5708
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Beam" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1968.16, 1327.23 )
-path_to_navigation_polygon = NodePath("../Navigation2D/LaserPolygon1")
+path_to_navigation_polygon = NodePath("../Navigation2D/Lzer")
 
 [node name="Line2D" parent="Beam" index="0"]
 points = PoolVector2Array( -1032.11, 2549.67, -716.481, 2549.67, -716.481, 45.5062, -793.052, 45.5062, -793.052, -2.7052 )

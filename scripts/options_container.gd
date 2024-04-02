@@ -60,16 +60,6 @@ func _back_to_game():
 	_show_all_menu_buttons()
 	
 
-func _on_ShowLeaderboard_pressed():
-	GPack.show_leaderboard(C.kingd_of_evolution_leaderboard)
-	_back_to_game()
-
-
-func _on_ShowAchievements_pressed():
-	GPack.show_achievements()
-	_back_to_game()
-
-
 func _on_Quit_pressed():
 	get_tree().quit()
 

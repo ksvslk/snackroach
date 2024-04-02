@@ -38,6 +38,10 @@ func _generated_tile(random_tile_name: String) -> Vector2:
 	return Vector2(rand_x, rand_y)
 
 
+func get_snacks_count() -> int:
+	return snack_cells.size()
+
+
 func decrease_snacks():
 	if not snack_cells.empty():
 		var tile_to_remove: Vector2 = snack_cells[0]

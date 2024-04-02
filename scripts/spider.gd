@@ -61,7 +61,7 @@ func _on_LaserDetection_area_shape_entered(_area_rid, area, _area_shape_index, _
 	if not is_dead:
 		if area.name == "LaserArea":
 			state_machine.transition_to(C.electrocuted_state)
-			Data.add_regular_achievement(C.achievement_neutralized_with_laser)
+			GlobalSteam.unlock_achievement_by_name(GlobalSteam.laser_achievement)
 		if area.name == "Cockroach" and area.get_parent().are_eating_conditions_met() and is_ready_to_eat():
 			state_machine.transition_to(C.eating_state)
 

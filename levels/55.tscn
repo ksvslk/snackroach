@@ -39,29 +39,29 @@ shader_param/speed = 3.435
 shader_param/angle = 0.0
 
 [sub_resource type="NavigationPolygon" id=52]
-vertices = PoolVector2Array( 2090.11, 584.21, 2472.97, 575.702, 2472.97, 998.261, 2087.27, 998.261 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 2090.11, 584.21, 2472.97, 575.702, 2472.97, 998.261, 2087.27, 998.261 ) ]
+vertices = PoolVector2Array( 2084.53, 586.743, 2175.27, 552.698, 2473.05, 546.984, 2555.3, 609.363, 2561.03, 1037.59, 2466.23, 1079.73, 2166.84, 1077.35, 2090.26, 1012.14 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
+outlines = [ PoolVector2Array( 2084.53, 586.743, 2175.27, 552.698, 2473.05, 546.984, 2555.3, 609.363, 2561.03, 1037.59, 2466.23, 1079.73, 2166.84, 1077.35, 2090.26, 1012.14 ) ]
 
 [sub_resource type="NavigationPolygon" id=53]
-vertices = PoolVector2Array( 1744.12, 587.046, 2087.27, 584.21, 2087.27, 998.261, 1746.96, 998.261 )
+vertices = PoolVector2Array( 1749.88, 578.283, 2087.27, 584.21, 2093.1, 1012.14, 1749.94, 1012.19 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1744.12, 587.046, 2087.27, 584.21, 2087.27, 998.261, 1746.96, 998.261 ) ]
+outlines = [ PoolVector2Array( 1749.88, 578.283, 2087.27, 584.21, 2093.1, 1012.14, 1749.94, 1012.19 ) ]
 
 [sub_resource type="NavigationPolygon" id=54]
-vertices = PoolVector2Array( 331.809, 598.39, 1746.96, 765.855, 1749.79, 1012.44, 944.378, 1015.28, 666.453, 1015.28, 1746.96, 589.882, 614.171, 1036.26, 714.664, 2818.95, 708.993, 3252.86, 340.316, 3255.69, 595.554, 2711.19, 589.882, 2535.36, 595.554, 1176.93 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 0, 5, 1 ), PoolIntArray( 0, 4, 6 ), PoolIntArray( 7, 8, 9, 10 ), PoolIntArray( 10, 9, 0, 11 ), PoolIntArray( 12, 11, 0 ), PoolIntArray( 0, 6, 12 ) ]
-outlines = [ PoolVector2Array( 1746.96, 589.882, 1746.96, 765.855, 1749.79, 1012.44, 944.378, 1015.28, 666.453, 1015.28, 614.171, 1036.26, 595.554, 1176.93, 589.882, 2535.36, 595.554, 2711.19, 714.664, 2818.95, 708.993, 3252.86, 340.316, 3255.69, 331.809, 598.39 ) ]
+vertices = PoolVector2Array( 1686.15, 533.685, 1749.32, 577.471, 1749.79, 1012.44, 1216.78, 1012.26, 320.547, 547.293, 1128.87, 1071.83, 723.33, 1066.22, 272.345, 612.527, 652.44, 1131.46, 275.563, 3272.67, 655.49, 2620.34, 797.383, 3278.26, 760.52, 3312.3, 323.781, 3312.36, 692.364, 2665.71, 791.642, 2798.99, 771.775, 2694.06 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 4, 3, 5, 6, 7 ), PoolIntArray( 7, 6, 8 ), PoolIntArray( 9, 7, 8, 10 ), PoolIntArray( 11, 12, 13, 9, 10, 14, 15 ), PoolIntArray( 15, 14, 16 ) ]
+outlines = [ PoolVector2Array( 1749.32, 577.471, 1749.79, 1012.44, 1216.78, 1012.26, 1128.87, 1071.83, 723.33, 1066.22, 652.44, 1131.46, 655.49, 2620.34, 692.364, 2665.71, 771.775, 2694.06, 791.642, 2798.99, 797.383, 3278.26, 760.52, 3312.3, 323.781, 3312.36, 275.563, 3272.67, 272.345, 612.527, 320.547, 547.293, 1686.15, 533.685 ) ]
 
 [sub_resource type="NavigationPolygon" id=55]
-vertices = PoolVector2Array( 1667.55, 808.251, 1670.39, 1202.45, 1296.04, 1202.45, 1296.04, 811.088 )
+vertices = PoolVector2Array( 1744.27, 807.998, 1741.49, 1207.87, 1253.7, 1202.27, 1247.98, 810.905 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1296.04, 811.088, 1296.04, 1202.45, 1670.39, 1202.45, 1667.55, 808.251 ) ]
+outlines = [ PoolVector2Array( 1247.98, 810.905, 1253.7, 1202.27, 1741.49, 1207.87, 1744.27, 807.998 ) ]
 
 [sub_resource type="NavigationPolygon" id=56]
-vertices = PoolVector2Array( 1761.14, 1409.48, 1755.47, 2359.53, 1213.8, 2365.2, 1210.96, 1409.48 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 1210.96, 1409.48, 1213.8, 2365.2, 1755.47, 2359.53, 1761.14, 1409.48 ) ]
+vertices = PoolVector2Array( 1256.54, 1414.97, 1735.82, 1414.9, 1812.4, 1505.64, 1818.2, 2359.26, 1761.49, 2410.32, 1245.34, 2413.23, 1191.45, 2356.52, 1188.49, 1471.69 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
+outlines = [ PoolVector2Array( 1188.49, 1471.69, 1191.45, 2356.52, 1245.34, 2413.23, 1761.49, 2410.32, 1818.2, 2359.26, 1812.4, 1505.64, 1735.82, 1414.9, 1256.54, 1414.97 ) ]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 2106, -22 )
@@ -201,9 +201,10 @@ position = Vector2( 845.119, 1293.2 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 22.9022, 1520.08 )
+edge_connection_margin = 10.0
 
 [node name="Spider" parent="Navigation2D" instance=ExtResource( 9 )]
-position = Vector2( 2285.79, 791.236 )
+position = Vector2( 2317.11, 802.244 )
 rotation = -3.14159
 path_to_player = NodePath("../../Roach")
 inital_tempo = 12
@@ -213,12 +214,13 @@ navpoly = SubResource( 52 )
 
 [node name="TopLaserPolygon" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 53 )
+enabled = false
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 54 )
 
 [node name="BottomLaserPolygon" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 0, 204.19 )
+position = Vector2( 0.0333252, 204.187 )
 navpoly = SubResource( 55 )
 enabled = false
 

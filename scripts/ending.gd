@@ -9,8 +9,7 @@ var game_completed = false
 func _ready():
 	var crown_hat = "res://graphics/crown.png"
 	roach.change_hat(crown_hat)
-	
-	GPack.unlock_achievement(C.achievement_crown)
+	GlobalSteam.unlock_achievement_by_name(GlobalSteam.crown_achievement)
 	roach.state_machine.transition_to(
 		C.success_State,
 		{

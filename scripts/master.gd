@@ -18,7 +18,6 @@ onready var compliment = $GamePlayMenu/OverlayButton/TV/Info/Compliment
 onready var overlay_taps_exceeded = $GamePlayMenu/OverlayTapsExceeded
 onready var hat_switch = $SettingsMenu/OptionsContainer/OptionsList/HatSwitch
 
-
 onready var level_label = $GamePlayMenu/InfoBarMargin/InfoBar/LevelNr
 
 onready var par_taps = $GamePlayMenu/TapsBarMargin/TapsInfoBar/ParTaps
@@ -59,10 +58,6 @@ func change_cockroach_hat(path:String):
 		current_level.roach.change_hat(path)
 
 
-func show_review():
-	GPack.ask_for_review()
-
-
 func _disable_playing():
 	pass
 
@@ -79,8 +74,6 @@ func _start_level():
 
 # THIS IS IS THE WAY ALL LEVELS SHOULD BE LOADED NOT JUST WHEN STARTING THE GAME!!!
 func _load_level(level_nr: int, rewards_count:int):
-	if level_nr == 25:
-		show_review()
 	_add_level_to_scene(level_nr)
 	var current_level = (level as Level)
 	total_taps_tapped = 0
@@ -94,7 +87,7 @@ func _load_level(level_nr: int, rewards_count:int):
 	total_taps.text = "0 / " + str(current_total_taps)
 	Data.current_par = current_level.par
 	_set_over_par_colors(current_level.par, 0)
-	_unlock_achievements(level_nr)
+	GlobalSteam.unlock_achievement_by_level(level_nr)
 	_reset_overlay_button()
 
 
@@ -112,13 +105,6 @@ func change_ui_for_all_in_pack():
 	change_ui_for_all_levels_unlocked()
 
 
-func _unlock_achievements(level_nr: int):
-	if level_nr == 14:
-		Data.add_regular_achievement(C.achievementDarkRoach)
-	elif level_nr == 26:
-		Data.add_regular_achievement(C.achievement_meet_beetle)
-
-
 func _increase_taps() -> void:
 	var current_level = level as Level
 	if not Data.get_unlimited_taps_state():
@@ -127,6 +113,9 @@ func _increase_taps() -> void:
 			_show_screen_of_taps_exceeded()
 	total_taps_tapped += 1
 	total_taps.text = str(total_taps_tapped) + " / " + str(current_total_taps)
+	if total_taps_tapped == level.max_taps:
+		print("Increase moves made (taps exceeded): ", total_taps_tapped)
+		GlobalSteam.increase_moves_made_stat(total_taps_tapped)
 	if total_taps_tapped > current_level.par:
 		current_level.snacks.decrease_snacks()
 	_set_over_par_colors(current_level.par, total_taps_tapped)
@@ -136,7 +125,6 @@ func _show_screen_of_taps_exceeded():
 	overlay_taps_exceeded.show()
 	game_state = GameState.FAIL
 	overlay_button.mouse_filter = Control.MOUSE_FILTER_STOP
-	Data.unlock_regular_achievements_in_bulk()
 
 
 func _set_over_par_colors(par:int, new_taps:int):
@@ -155,7 +143,9 @@ func _connect_signals():
 
 func _on_Level_game_over():
 	#"game over _on_Level_game_over: ", game_state)
-	Data.unlock_regular_achievements_in_bulk()
+	# TODO: IF TAPS ARE ALL USED TO NOT CALL NEXT LINE WHEN LEVEL COMPLETED SUCCESSFULLY
+	if total_taps_tapped < level.max_taps:
+		GlobalSteam.increase_moves_made_stat(total_taps_tapped)
 	if not overlay_taps_exceeded.visible and not overlay_button.visible:
 		game_state = GameState.FAIL
 		overlay_button.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -167,12 +157,6 @@ func _on_Level_game_over():
 		_change_ui_for_all_levels_unlocked()
 	else:
 		game_state = GameState.FAIL
-	if level:
-		GPack.log_event("FAIL_LEVEL_" + Data.current_level, {
-			"TAPS":current_total_taps,
-			"MAX_TAPS":level.max_taps,
-			"PAR":Data.current_par,
-		})
 
 
 func _change_ui_for_all_levels_unlocked():
@@ -200,27 +184,23 @@ func _show_result_on_tv(info: Array):
 	tv.visible = true
 
 
-func _log_event():
-	if level:
-		GPack.log_event("COMPLETE_LEVEL_" + Data.current_level, {
-			"TAPS":current_total_taps,
-			"MAX_TAPS":level.max_taps,
-			"PAR":Data.current_par
-		})
-
 
 func _on_Level_finished():
 	#"game_state _on_Level_finished: ", game_state)
 	game_state = GameState.COMPLETE
+	if level.max_taps == total_taps_tapped:
+		if level.snacks.get_snacks_count() > 0:
+			GlobalSteam.increase_snacks_stat(level.snacks.snacks_count)
+	else:
+		GlobalSteam.increase_snacks_stat(level.snacks.snacks_count)
+		GlobalSteam.increase_moves_made_stat(total_taps_tapped)
 	_animate_overlay_button()
 	var info = Data.get_finish_line_info(total_taps_tapped, level.par, level.snacks.snacks_count)
 	_show_result_on_tv(info)
 	_activate_tap_to_continue(true)
-	_log_event()
 
 
 func execute_more_level_complete_actions():
-	Data.unlock_regular_achievements_in_bulk()
 	Data.unlock_next_level()
 
 
@@ -302,49 +282,6 @@ func _restart_level():
 	#level.queue_free()
 	level.call_deferred("queue_free")
 	Data.restart_level()
-
-
-func _show_loading_game():
-	pass
-
-
-func _show_loading_game_result(game_data: Dictionary, loading_result: bool):
-	if loading_result:
-		Data.load_game(game_data)
-	else:
-		printerr("Something went wrong when loading game... or initial start :(")
-	_enable_playing()
-
-
-func _give_reward(_some, _stuff):
-	match GPack.current_ad:
-		"add_taps_rewarded":
-			GPack.log_event("ADD_TAPS_REWARD", {
-				"LEVEL":int(Data.current_level),
-				"PAR":Data.current_par,
-				"TAPS":current_total_taps
-			})
-			_add_rewarded_taps()
-		"skip_level_rewarded":
-			GPack.log_event("SKIP_LEVEL_REWARD", {
-				"LEVEL":int(Data.current_level),
-				"PAR":Data.current_par,
-				"TAPS":current_total_taps
-			})
-			Data.unlock_next_level()
-			_start_next_level()
-
-
-func _add_rewarded_taps():
-	Data.increase_taps_reward_count()
-	var current_level = (level as Level)
-	current_total_taps += current_level.rewarded_taps_amount
-	total_taps.text = str(total_taps_tapped) + " / " + str(current_total_taps)
-
-
-func _rewarded_ad_showing_failed():
-	_reset_overlay_button()
-	_restart_level()
 
 
 func _on_SkipLevel_gui_input(event: InputEvent):

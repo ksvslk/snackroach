@@ -2,44 +2,10 @@
 
 extends Node
 
-const is_amazon = false
-
-const kingd_of_evolution_leaderboard: String = "CgkI_-KD1rIREAIQAQ" # google
-const kings_of_evolution: String = "kings_of_evolution" # apple
-
 const next_state: String = "NextState"
 const previous_state: String = "PreviousState"
 const state_before_prepare: String = "StateBeforePrepare"
 const snack_points_coefficient: int = 100
-
-
-# Google achievements
-const achievement_crown = "CgkI_-KD1rIREAIQAg"
-const achievement_20xbirdie = "CgkI_-KD1rIREAIQAw"
-const achievement_10xeagle = "CgkI_-KD1rIREAIQBA"
-const achievement_5xholeinone = "CgkI_-KD1rIREAIQBQ"
-const achievement_neutralized_with_laser = "CgkI_-KD1rIREAIQBg"
-const achievement_30xpar = "CgkI_-KD1rIREAIQCg"
-const achievement_meet_beetle = "CgkI_-KD1rIREAIQCA"
-const achievement_start_a_fight = "CgkI_-KD1rIREAIQCQ"
-const achievement_neutralize_with_rock = "CgkI_-KD1rIREAIQBw"
-const achievementSecretRoom1 = "CgkI_-KD1rIREAIQDA"
-const achievementSecretRoom2 = "CgkI_-KD1rIREAIQDQ"
-const achievementDarkRoach = "CgkI_-KD1rIREAIQDg"
-
-# Apple achievements
-const dark_roach = "dark_roach"
-const neutralize_with_rock = "neutralize_with_rock"
-const meet_beetle = "meet_beetle"
-const start_a_fight = "start_a_fight"
-const neutralized_with_laser = "neutralized_with_laser"
-const crown = "crown"
-const collect_20_birdies = "collect_20_birdies"
-const five_times_hole_in_one = "five_times_hole_in_one"
-const secret_room_1 = "secret_room_1"
-const collect_10_eagles = "collect_10_eagles"
-const collect_30_pars = "collect_30_pars"
-const secret_room_2 = "secret_room_2"
 
 
 # States
