@@ -7,7 +7,7 @@
 <p align="center">Guide a cockroach to the food gate in each of 69 levels, with as few taps as you can.</p>
 
 <p align="center">
-  <a href="https://store.steampowered.com/app/2908270"><img src="https://img.shields.io/badge/Steam-000000?style=for-the-badge&logo=steam&logoColor=white" height="40" align="middle" alt="Get it on Steam"></a>
+  <a href="https://store.steampowered.com/app/2908270"><img src=".github/steam-badge.svg" height="40" align="middle" alt="Get it on Steam"></a>
   &nbsp;
   <a href="https://apps.apple.com/app/id6443960622"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="40" align="middle" alt="Download on the App Store"></a>
   &nbsp;
